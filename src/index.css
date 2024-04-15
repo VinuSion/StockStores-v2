@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--ring));
+  }
+
+  ::selection {
+    background-color: hsla(var(--primary));
+    color: hsl(var(--background));
+  }
+
+  :root {
+    font-family: 'Poppins', Courier, monospace;
+    color-scheme: light dark;
+    
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 158 76.2% 38%;
+    --primary-foreground: 355.7 100% 97.3%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 359 62.8% 55%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 158 84% 39%;
+
+    --radius: 0.65rem;
+  }
+
+  .dark {
+    --background: 189.9 64.9% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 189.9 30.9% 13.1%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 189.9 30.9% 13.1%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 158 71% 38%;
+    --primary-foreground: 144.9 80.4% 10%;
+
+    --secondary: 190 18.7% 18.8%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 190 18.7% 18.8%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 190 18.7% 18.8%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 353.7 62.8% 35%;
+    --destructive-foreground: 0 85.7% 97.3%;
+
+    --border: 184.3 15.2% 19%;
+    --input: 184.3 15.2% 19%;
+    --ring: 158 84% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .align-center {
+    @apply flex items-center justify-center
+  }
+
+  .align-center-row {
+    @apply flex flex-col justify-center items-center
+  }
+
+  .align-between {
+    @apply flex items-center justify-between
+  }
+
+  .svg-size {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+}
+
+/* STYLES FOR FORM INPUTS */
+.select-primitive[data-state="open"] .select-chevron {
+  transform: rotate(180deg);
+}
