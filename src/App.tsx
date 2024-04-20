@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { ThemeProvider } from "@components/theme-provider"
-import { ThemeToggle } from "@components/theme-toggle"
-import { Button } from "@ui/button"
-import { Ping } from "@ui/ping"
+import { ThemeProvider } from '@components/theme-provider'
+import { ThemeToggle } from '@components/theme-toggle'
+import { Button } from '@ui/button'
+import { Ping } from '@ui/ping'
 import {
   Select,
   SelectContent,
@@ -10,28 +9,29 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@ui/select"
-import { Send, LoaderCircle, Bell } from "lucide-react"
+} from '@ui/select'
+import { Send, LoaderCircle, Bell } from 'lucide-react'
+
+import { useLoading } from './hooks/useLoading'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleClick = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  };
+  const { isLoading, handleLoadingClick } = useLoading()
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="ui-theme">
       <div className="w-full align-center-row gap-2 my-4">
         <h1 className="font-bold text-lg">Change Theme Here</h1>
-        <ThemeToggle/>
-        <Button 
-          onClick={handleClick} 
-          disabled={isLoading} 
-          icon={isLoading ? <LoaderCircle className="svg-size animate-spin" /> : <Send className="svg-size" />}
+        <ThemeToggle />
+        <Button
+          onClick={handleLoadingClick}
+          disabled={isLoading}
+          icon={
+            isLoading ? (
+              <LoaderCircle className="svg-size animate-spin" />
+            ) : (
+              <Send className="svg-size" />
+            )
+          }
         >
           {isLoading ? 'Loading...' : 'Submit'}
         </Button>

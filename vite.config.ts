@@ -10,8 +10,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@lib": path.resolve(__dirname, "./src/lib"),
-      "@ui": path.resolve(__dirname, "./src/ui"),
+      "@ui": path.resolve(__dirname, "./src/components/ui"),
+      "@pages": path.resolve(__dirname, "./src/pages"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
   server: {
