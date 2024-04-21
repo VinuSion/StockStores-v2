@@ -2,6 +2,7 @@ import { ThemeProvider } from '@components/theme-provider'
 import { ThemeToggle } from '@components/theme-toggle'
 import { Button } from '@ui/button'
 import { Ping } from '@ui/ping'
+import { SVGLogo } from '@ui/svg-logo'
 import {
   Select,
   SelectContent,
@@ -54,6 +55,7 @@ function App() {
             </SelectGroup>
           </SelectContent>
         </Select>
+        <SVGLogo className="w-10 h-10" primaryAccent />
       </div>
     </ThemeProvider>
   )

@@ -22,6 +22,10 @@
     color: hsl(var(--background));
   }
 
+  body {
+    transition: background-color 0.15s ease-in-out;
+  }
+
   :root {
     font-family: 'Poppins', Courier, monospace;
     color-scheme: light dark;
