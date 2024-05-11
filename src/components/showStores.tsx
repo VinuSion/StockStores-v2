@@ -15,9 +15,9 @@ const ShowStores = () => {
     <div>
       {data?.map((store, index) => (
         <div className="align-center-row" key={index}>
-          <p>{index}. {store.storeName}</p>
-          <p>{index}. {store.storeAddress.address}</p>
-          <p>{index}. {store.storePhoneNumber}</p>
+          <p>{index} - {store.storeName}</p>
+          <p>{index} - {store.storeAddress.address}</p>
+          <p>{index} - {store.storePhoneNumber}</p>
         </div>
       ))}
     </div>
