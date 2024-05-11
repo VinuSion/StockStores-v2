@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { request } from '@services/RequestGenerator'
-import { BASE_STORES_ENDPOINT, StoreData } from '@/services/storeService/store.types'
+import { request } from '@utils/RequestGenerator'
+import { BASE_STORES_ENDPOINT, StoreData } from '@utils/types/store.types'
 
 
 const useGetAllStores = () => {

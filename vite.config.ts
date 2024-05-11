@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -15,7 +14,7 @@ export default defineConfig({
       "@ui": path.resolve(__dirname, "./src/components/ui"),
       "@forms": path.resolve(__dirname, "./src/components/forms"),
       "@pages": path.resolve(__dirname, "./src/pages"),
-      "@services": path.resolve(__dirname, "./src/services"),
+      "@services": path.resolve(__dirname, "./src/hooks/services"),
       "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },

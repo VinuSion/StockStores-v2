@@ -30,7 +30,7 @@
       "@ui/*": ["./src/components/ui/*"],
       "@forms/*": ["./src/components/forms/*"],
       "@pages/*": ["./src/pages/*"],
-      "@services/*": ["./src/services/*"],
+      "@services/*": ["./src/hooks/services/*"],
       "@utils/*": ["./src/utils/*"],
     }
   },
