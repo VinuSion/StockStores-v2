@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { LoaderCircle } from 'lucide-react'
 
 import { cn } from '@utils/classNameMerge'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible-ring disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible-ring disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -39,6 +40,7 @@ export interface ButtonProps
   asChild?: boolean
   icon?: React.ReactNode
   iconRight?: boolean
+  isLoading?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -50,6 +52,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       icon,
       iconRight = false,
+      isLoading = false,
       ...props
     },
     ref
@@ -59,19 +62,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        disabled={isLoading}
         {...props}
       >
-        {iconRight ? (
-          <>
-            {props.children}
-            {icon && <>{icon}</>}
-          </>
-        ) : (
-          <>
-            {icon && <>{icon}</>}
-            {props.children}
-          </>
+        {!iconRight && isLoading && (
+          <LoaderCircle className="svg-size animate-spin" />
         )}
+        {!iconRight && icon && !isLoading && <>{icon}</>}
+        {props.children}
+        {iconRight && isLoading && <LoaderCircle className="svg-size animate-spin" />}
+        {iconRight && icon && !isLoading && <>{icon}</>}
       </Comp>
     )
   }

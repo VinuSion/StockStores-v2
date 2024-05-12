@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
 import { routerType } from '@utils/types/router.types'
 import { authPagesData, landingPagesData } from '@utils/constants/pagesData'
-import NotFound from '@pages/NotFound' // Import your custom 404 page component
+import NotFound from '@pages/NotFound'
+import { useUserStore } from '@/store'
 
 const Router = () => {
-  const isAuth: boolean = false // Pretend this is controlled by authentication logic
+  const { userData } = useUserStore();
 
   const authPageRoutes = authPagesData.map(
     ({ path, title, element }: routerType) => {
@@ -18,10 +19,10 @@ const Router = () => {
     }
   )
 
-  const allRoutes = isAuth ? [...authPageRoutes] : [...landingPageRoutes]
+  const allRoutes = userData ? [...authPageRoutes] : [...landingPageRoutes]
 
   // Add wildcard route to catch any unmatched routes
-  allRoutes.push(<Route key="not-found" path="*" element={<NotFound isAuth={isAuth} />} />)
+  allRoutes.push(<Route key="not-found" path="*" element={<NotFound userData={userData} />} />)
 
   return <Routes>{allRoutes}</Routes>
 }

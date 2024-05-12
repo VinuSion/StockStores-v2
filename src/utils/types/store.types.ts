@@ -1,12 +1,12 @@
-export const BASE_STORES_ENDPOINT: string = '/stores'
+export const STORES_ENDPOINT: string = '/stores'
 
-export interface StoreAddress {
+export type StoreAddress = {
   address: string
   city: string
   department: string
 }
 
-export interface StoreData {
+export type StoreData = {
   _id: string
   sellerId: string
   sellerFirstName: string
@@ -14,7 +14,7 @@ export interface StoreData {
   sellerPictureURL: string
   storeSlug: string
   storeName: string
-  storeDescription: string
+  storeDescription?: string
   storePhoneNumber: string
   storeAddress: StoreAddress
   storeImageURL: string
