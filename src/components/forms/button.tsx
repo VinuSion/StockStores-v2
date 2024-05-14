@@ -62,16 +62,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        disabled={isLoading}
+        disabled={isLoading || props.disabled}
         {...props}
       >
-        {!iconRight && isLoading && (
+        {!iconRight && (isLoading ? (
           <LoaderCircle className="svg-size animate-spin" />
-        )}
-        {!iconRight && icon && !isLoading && <>{icon}</>}
+        ) : (
+          icon && <>{icon}</>
+        ))}
         {props.children}
-        {iconRight && isLoading && <LoaderCircle className="svg-size animate-spin" />}
-        {iconRight && icon && !isLoading && <>{icon}</>}
+        {iconRight && (isLoading ? (
+          <LoaderCircle className="svg-size animate-spin" />
+        ) : (
+          icon && <>{icon}</>
+        ))}
       </Comp>
     )
   }

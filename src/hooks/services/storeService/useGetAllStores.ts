@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 import { request } from '@utils/RequestGenerator'
-import { STORES_ENDPOINT, StoreData } from '@utils/types/store.types'
+import { STORES_ENDPOINT, Store } from '@utils/types/store.types'
 
 const useGetAllStores = () => {
-  const { isLoading, isError, data, error } = useQuery<StoreData[], Error>({
+  const { isLoading, isError, data, error } = useQuery<Store[], Error>({
     queryKey: ['all-stores'],
     queryFn: () =>
-      request<StoreData[]>({
+      request<Store[]>({
         url: `${STORES_ENDPOINT}`,
         method: 'GET',
       }),

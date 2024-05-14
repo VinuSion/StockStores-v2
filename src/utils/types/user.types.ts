@@ -17,7 +17,7 @@ export type User = {
 
 export interface UserStore {
   userData: User | null
-  setUserData: (user: User | null) => void
-  updateUserData: (user: User | null) => void
+  setUserData: (user: User) => void
+  updateUserData: (user: Partial<User>) => void
   removeUserData: () => void
 }

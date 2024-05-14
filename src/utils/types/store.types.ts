@@ -6,8 +6,8 @@ export type StoreAddress = {
   department: string
 }
 
-export type StoreData = {
-  _id: string
+export type Store = {
+  id: string
   sellerId: string
   sellerFirstName: string
   sellerLastName: string

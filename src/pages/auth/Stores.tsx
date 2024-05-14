@@ -9,28 +9,17 @@ const Stores = () => {
 
   const { userData, updateUserData, removeUserData } = useUserStore()
 
-  const updatedUserData: User = {
-    id: crypto.randomUUID(),
+  const updatedUserData: Partial<User> = {
     firstName: 'Bruh',
     lastName: 'Momento',
-    email: 'bruh@example.com',
-    isSeller: true,
-    pictureURL: 'https://example.com/profile.jpg',
-    settings: {
-      colorTheme: 'dark',
-    },
   }
 
   const handleUpdateProfile = () => {
-    // Step 3: Update user data
     updateUserData(updatedUserData)
-    console.log('Updated user data:', updatedUserData)
   }
 
   const handleLogout = () => {
-    // Step 3: Remove user data when logging out
     removeUserData()
-    console.log('User logged out')
     navigate('/')
   }
 

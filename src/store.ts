@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
-import { UserStore } from '@utils/types/user.types'
+import { UserStore, User } from '@utils/types/user.types'
 import { Theme, ThemeProviderState } from '@utils/types/theme.types'
 
 export const useUserStore = create<UserStore>()(
@@ -8,13 +8,14 @@ export const useUserStore = create<UserStore>()(
     persist(
       (set) => ({
         userData: null,
-        setUserData: (user) => {
+        setUserData: (user: User) => {
           set((state) => ({ ...state, userData: user }))
           useThemeStore.getState().setTheme(user?.settings?.colorTheme || "system")
         },
-        updateUserData: (user) => {
-          set((state) => ({ ...state, userData: user }))
-          useThemeStore.getState().setTheme(user?.settings?.colorTheme || "system")
+        updateUserData: (userUpdates: Partial<User>) => {
+          set((state) => ({
+            userData: { ...state.userData, ...userUpdates } as User,
+          }))
         },
         removeUserData: () => {
           set({ userData: null })

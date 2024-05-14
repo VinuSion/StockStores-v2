@@ -6,6 +6,7 @@ import SignUp from '@pages/landing/SignUp'
 import ResetPassword from '@pages/landing/ResetPassword'
 
 import Stores from '@pages/auth/Stores'
+import Dashboard from '@pages/auth/Dashboard'
 
 const landingPagesData: routerType[] = [
   {
@@ -35,6 +36,11 @@ const authPagesData: routerType[] = [
     title: 'stores',
     path: '/stores',
     element: <Stores />,
+  },
+  {
+    title: 'dashboard',
+    path: '/dashboard',
+    element: <Dashboard />,
   },
 ]
 
