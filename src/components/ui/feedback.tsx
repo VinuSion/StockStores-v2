@@ -14,28 +14,28 @@ const Feedback: React.FC<FeedbackProps> = ({ variant, message }) => {
 
     switch (variant) {
       case "error":
-        textColor = "text-red-600";
-        bgColor = "bg-red-100";
+        textColor = "text-rose-600";
+        bgColor = "bg-rose-600/20";
         icon = <AlertTriangle className={`h-3 w-3`} />;
         break;
       case "warning":
         textColor = "text-amber-600";
-        bgColor = "bg-amber-100";
+        bgColor = "bg-amber-600/20";
         icon = <AlertOctagon className={`h-3 w-3`} />;
         break;
       case "info":
-        textColor = "text-blue-600";
-        bgColor = "bg-blue-100";
+        textColor = "text-blue-500";
+        bgColor = "bg-blue-600/20";
         icon = <Info className={`h-3 w-3`} />;
         break;
       case "success":
-        textColor = "text-emerald-600";
-        bgColor = "bg-emerald-100";
+        textColor = "text-emerald-500";
+        bgColor = "bg-emerald-600/20";
         icon = <CheckCircle2 className={`h-3 w-3`} />;
         break;
       default:
-        textColor = "text-slate-600";
-        bgColor = "bg-slate-200";
+        textColor = "text-slate-400";
+        bgColor = "bg-slate-600/30";
         icon = <XCircle className={`h-3 w-3`} />;
         break;
     }
@@ -46,12 +46,12 @@ const Feedback: React.FC<FeedbackProps> = ({ variant, message }) => {
   const { icon, textColor, bgColor } = getIconAndColor();
 
   return (
-    <span className={`inline-flex items-center w-auto text-xs ${bgColor} rounded ${textColor} p-[2px] px-2`}>
+    <div className={`inline-flex items-center w-auto text-xs mt-1.5 ${bgColor} rounded ${textColor} p-[2px] px-2`}>
       {icon}
       { message ? (
         <span className="ml-1">{message}</span>
       ) : (<></>)}
-    </span>
+    </div>
   );
 };
 

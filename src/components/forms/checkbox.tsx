@@ -17,7 +17,7 @@ const Checkbox = React.forwardRef<
     {...props}
   >
     <CheckboxPrimitive.Indicator className={cn('align-center text-current')}>
-      <Check className="h-4 w-4 transition-all delay-75 ease-linear" />
+      <Check className="h-4 w-4 transition-all delay-75 ease-linear" strokeWidth="3" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))
