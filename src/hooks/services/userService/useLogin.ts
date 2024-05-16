@@ -3,18 +3,12 @@ import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { z } from 'zod'
+
 import { request } from '@utils/RequestGenerator'
 import { USERS_ENDPOINT, User } from '@utils/types/user.types'
-import { API_ERROR_DEFAULT_MESSAGE } from '@/utils/constants/errorMessages'
+import { API_ERROR_DEFAULT_MESSAGE } from '@utils/constants/errorMessages'
+import { loginFormSchema, LoginFormData } from '@utils/zod-schemas/auth-schema'
 import { useUserStore } from '@/store'
-
-const loginFormSchema = z.object({
-  email: z.string().min(1, 'Este campo es requerido'),
-  password: z.string().min(1, 'Este campo es requerido'),
-})
-
-type LoginFormData = z.infer<typeof loginFormSchema>
 
 const useLogin = () => {
   const [loginError, setLoginError] = useState<string | null>(null)
@@ -58,4 +52,4 @@ const useLogin = () => {
   }
 }
 
-export default useLogin
+export { useLogin }

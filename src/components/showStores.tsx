@@ -1,4 +1,4 @@
-import useGetAllStores from '@services/storeService/useGetAllStores'
+import { useGetAllStores } from '@services/storeService/useGetAllStores'
 
 const ShowStores = () => {
   const { isLoading, isError, data, error } = useGetAllStores()

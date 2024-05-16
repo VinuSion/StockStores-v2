@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Eye, EyeOff } from 'lucide-react'
+
+import { Feedback } from '@ui/feedback'
 import { Button } from '@forms/button'
 import { Input } from '@forms/input'
 import { Label } from '@forms/label'
-import useLogin from '@hooks/services/userService/useLogin'
+import { useLogin } from '@hooks/services/userService/useLogin'
 
 const Login = () => {
   const [passwordShown, setPasswordShown] = useState<boolean>(false)
@@ -11,8 +13,8 @@ const Login = () => {
 
   return (
     <div className="align-center-row gap-3">
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="mt-5">
+        <div className="mb-5">
           <Label htmlFor="email" className="text-tertiary">
             Correo electrónico
           </Label>
@@ -23,10 +25,11 @@ const Login = () => {
             {...register('email')}
           />
           {errors.email && (
-            <span className="text-red-500">{errors.email.message}</span>
+            <Feedback variant="error" message={errors.email.message} />
           )}
         </div>
-        <div>
+
+        <div className="mb-5">
           <Label htmlFor="password" className="text-tertiary">
             Contraseña
           </Label>
@@ -51,10 +54,12 @@ const Login = () => {
             </Button>
           </div>
           {errors.password && (
-            <span className="text-red-500">{errors.password.message}</span>
+            <Feedback variant="error" message={errors.password.message} />
           )}
         </div>
-        {loginError && <div className="text-red-500">{loginError}</div>}
+
+        {loginError && <Feedback variant="error" message={loginError} />}
+
         <Button type="submit" isLoading={isPending}>
           Login
         </Button>
