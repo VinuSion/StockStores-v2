@@ -15,4 +15,4 @@ const useGetAllStores = () => {
   return { isLoading, isError, data, error }
 }
 
-export default useGetAllStores
+export { useGetAllStores }
