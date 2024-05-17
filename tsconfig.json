@@ -29,6 +29,7 @@
       "@lib/*": ["./src/lib/*"],
       "@ui/*": ["./src/components/ui/*"],
       "@forms/*": ["./src/components/forms/*"],
+      "@modules/*": ["./src/components/modules/*"],
       "@pages/*": ["./src/pages/*"],
       "@services/*": ["./src/hooks/services/*"],
       "@utils/*": ["./src/utils/*"],

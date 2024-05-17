@@ -26,7 +26,7 @@ const landingPagesData: routerType[] = [
   },
   {
     title: 'reset-password',
-    path: '/reset-password',
+    path: '/reset-password/:token',
     element: <ResetPassword />,
   },
 ]

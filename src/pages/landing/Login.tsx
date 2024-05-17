@@ -4,8 +4,10 @@ import { Eye, EyeOff, LogIn } from 'lucide-react'
 
 import { Feedback } from '@ui/feedback'
 import { Button } from '@forms/button'
+import { Checkbox } from '@forms/checkbox'
 import { Input } from '@forms/input'
 import { Label } from '@forms/label'
+import { ForgotPassword } from '@modules/landing/ForgotPassword'
 
 import { useLogin } from '@hooks/services/userService/useLogin'
 
@@ -42,19 +44,30 @@ const Login = () => {
               size="icon"
               type="button"
               className="transition duration-300 hover:shadow-md focus:shadow-md w-12"
+              icon={
+                passwordShown ? (
+                  <Eye className="svg-size" />
+                ) : (
+                  <EyeOff className="svg-size" />
+                )
+              }
               onClick={() => setPasswordShown(!passwordShown)}
-            >
-              {passwordShown ? (
-                <Eye className="h-5 w-5" />
-              ) : (
-                <EyeOff className="h-5 w-5" />
-              )}
-            </Button>
+            />
           </div>
           {errors.password && (
             <Feedback variant="error" message={errors.password.message} />
           )}
           {loginError && <Feedback variant="error" message={loginError} />}
+        </div>
+
+        <div className="flex items-center w-full gap-1.5 mb-2">
+          <Checkbox id="sesion" />
+          <Label
+            htmlFor="sesion"
+            className="text-xs sm:text-base cursor-pointer"
+          >
+            Mantener iniciada mi sesión
+          </Label>
         </div>
 
         <Button
@@ -65,20 +78,20 @@ const Login = () => {
         >
           Login
         </Button>
-
-        <div className="flex flex-col gap-1.5">
-          <span className="text-xs sm:text-sm">
-            ¿No tienes cuenta?
-            <Link className="text-primary ml-1 hover:underline" to="/signup">
-              Crear cuenta
-            </Link>
-          </span>
-          <span className="text-xs sm:text-sm">
-            ¿Olvidaste la Contraseña? Bruh.
-          </span>
-        </div>
-        
       </form>
+
+      <div className="flex flex-col gap-1.5">
+        <span className="text-xs sm:text-sm">
+          ¿No tienes cuenta?
+          <Link className="text-primary ml-1 hover:underline" to="/signup">
+            Crear cuenta
+          </Link>
+        </span>
+        <span className="text-xs sm:text-sm">
+          ¿Olvidaste la Contraseña?
+          <ForgotPassword />
+        </span>
+      </div>
     </div>
   )
 }

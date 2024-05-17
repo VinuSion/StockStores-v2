@@ -11,7 +11,7 @@ import { normalizeName } from '@utils/stringMethods'
 import {
   signupFormSchema,
   SignupFormData,
-} from '@/utils/zod-schemas/auth-schema'
+} from '@utils/zod-schemas/auth-schema'
 
 const useSignup = () => {
   const [signupError, setSignupError] = useState<string | null>(null)

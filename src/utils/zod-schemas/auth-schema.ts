@@ -77,4 +77,54 @@ export const signupFormSchema = z
 
 export type SignupFormData = z.infer<typeof signupFormSchema>
 
+// FORGOT PASSWORD SCHEMA
+export const forgotFormSchema = z.object({
+  email: z
+    .string()
+    .min(1, 'Este campo es requerido')
+    .email({ message: 'Correo electronico invalido' }),
+})
+
+export type ForgotFormData = z.infer<typeof forgotFormSchema>
+
 // RESET PASSWORD SCHEMA
+export const resetFormSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, 'Contraseña debe tener minimo 8 caracteres')
+      .refine(
+        (password) => {
+          return /[A-Z]/.test(password)
+        },
+        {
+          message: 'Contraseña debe contener al menos una letra mayúscula',
+        }
+      )
+      .refine(
+        (password) => {
+          return /\d/.test(password)
+        },
+        {
+          message: 'Contraseña debe contener al menos un número',
+        }
+      )
+      .refine(
+        (password) => {
+          return /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)
+        },
+        {
+          message: 'Contraseña debe incluir al menos un carácter especial',
+        }
+      ),
+    repeatPassword: z
+      .string()
+      .min(8, { message: 'Las contraseñas no coinciden' })
+      .max(20),
+  })
+  .refine((data) => data.password === data.repeatPassword, {
+    path: ['repeatPassword'],
+    message: 'Las contraseñas no coinciden',
+  })
+
+export type ResetFormData = z.infer<typeof resetFormSchema>

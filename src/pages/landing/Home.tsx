@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@forms/button'
-import { ThemeToggle } from '@components/theme-toggle'
+import { ThemeToggle } from '@modules/theme/theme-toggle'
 
 const Home = () => {
   return (

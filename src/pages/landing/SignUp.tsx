@@ -17,7 +17,7 @@ const SignUp = () => {
   return (
     <div className="align-center-row gap-3 w-auto h-auto">
       <form onSubmit={handleSubmit} className="mt-5">
-        <div className="flex flex-row gap-3 mb-5">
+        <div className="flex flex-row gap-3 mb-1.5">
           <div className="grid w-full gap-1.5">
             <Label htmlFor="firstName">Nombre</Label>
             <Input
@@ -26,9 +26,6 @@ const SignUp = () => {
               placeholder="Nombre"
               {...register('firstName')}
             />
-            {errors.firstName && (
-              <Feedback variant="error" message={errors.firstName.message} />
-            )}
           </div>
 
           <div className="grid w-full gap-1.5">
@@ -39,10 +36,16 @@ const SignUp = () => {
               placeholder="Apellido"
               {...register('lastName')}
             />
-            {errors.lastName && (
-              <Feedback variant="error" message={errors.lastName.message} />
-            )}
           </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 mb-5">
+          {errors.firstName && (
+            <Feedback variant="error" message={errors.firstName.message} />
+          )}
+          {errors.lastName && (
+            <Feedback variant="error" message={errors.lastName.message} />
+          )}
         </div>
 
         <div className="grid w-full gap-1.5 mb-5">
@@ -71,14 +74,15 @@ const SignUp = () => {
               size="icon"
               type="button"
               className="transition duration-300 hover:shadow-md focus:shadow-md w-12"
+              icon={
+                passwordShown ? (
+                  <Eye className="svg-size" />
+                ) : (
+                  <EyeOff className="svg-size" />
+                )
+              }
               onClick={() => setPasswordShown(!passwordShown)}
-            >
-              {passwordShown ? (
-                <Eye className="h-5 w-5" />
-              ) : (
-                <EyeOff className="h-5 w-5" />
-              )}
-            </Button>
+            />
           </div>
           {errors.password && (
             <Feedback variant="error" message={errors.password.message} />

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from '@/App'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ThemeProvider } from '@components/theme-provider'
+import { ThemeProvider } from '@modules/theme/theme-provider'
 import { Toaster } from '@ui/toaster'
 import '@assets/index.css'
 
