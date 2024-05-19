@@ -1,14 +1,16 @@
-import { routerType } from '@utils/types/router.types'
+import { RouterType } from '@utils/types/router.types'
 
 import Home from '@pages/landing/Home'
 import Login from '@pages/landing/Login'
 import SignUp from '@pages/landing/SignUp'
 import ResetPassword from '@pages/landing/ResetPassword'
 
+import Account from '@pages/auth/Account'
 import Stores from '@pages/auth/Stores'
 import Dashboard from '@pages/auth/Dashboard'
+import Orders from '@pages/auth/Orders'
 
-const landingPagesData: routerType[] = [
+const landingPagesData: RouterType[] = [
   {
     title: 'home',
     path: '/',
@@ -31,7 +33,12 @@ const landingPagesData: routerType[] = [
   },
 ]
 
-const authPagesData: routerType[] = [
+const authPagesData: RouterType[] = [
+  {
+    title: 'account',
+    path: '/account',
+    element: <Account />,
+  },
   {
     title: 'stores',
     path: '/stores',
@@ -41,6 +48,11 @@ const authPagesData: routerType[] = [
     title: 'dashboard',
     path: '/dashboard',
     element: <Dashboard />,
+  },
+  {
+    title: 'orders',
+    path: '/orders',
+    element: <Orders />,
   },
 ]
 

@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from '@pages/router'
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Router />
@@ -9,4 +9,4 @@ const App = () => {
   )
 }
 
-export default App
+export { App }

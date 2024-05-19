@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
-import { routerType } from '@utils/types/router.types'
+import { RouterType } from '@utils/types/router.types'
 import { authPagesData, landingPagesData } from '@utils/constants/pagesData'
 import NotFound from '@pages/NotFound'
 import { useUserStore } from '@/store'
@@ -8,13 +8,13 @@ const Router = () => {
   const { userData } = useUserStore()
 
   const authPageRoutes = authPagesData.map(
-    ({ path, title, element }: routerType) => {
+    ({ path, title, element }: RouterType) => {
       return <Route key={title} path={path} element={element} />
     }
   )
 
   const landingPageRoutes = landingPagesData.map(
-    ({ path, title, element }: routerType) => {
+    ({ path, title, element }: RouterType) => {
       return <Route key={title} path={path} element={element} />
     }
   )

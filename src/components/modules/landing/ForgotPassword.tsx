@@ -16,7 +16,7 @@ import { formatTime } from '@utils/numberMethods'
 
 import { useForgotPassword } from '@hooks/services/userService/useForgotPassword'
 
-const ForgotPassword = () => {
+const ForgotPassword: React.FC = () => {
   const {
     register,
     handleSubmit,

@@ -8,7 +8,7 @@ const ShowStores = () => {
   }
 
   if (isError) {
-    return <p>Bruh there's an error...({error!.message})</p>
+    return <p>{error!.message}</p>
   }
 
   return (
