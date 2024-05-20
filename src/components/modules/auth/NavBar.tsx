@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
+import { SquareUserRound } from 'lucide-react'
 
 import { SVGFullLogo } from '@ui/svg-logo'
 import { menuItems } from '@utils/constants/navBarList'
@@ -16,7 +17,12 @@ const NavBar: React.FC = () => {
       <nav className="flex-1 md:p-4">
         <ul className="h-full flex justify-center gap-3 md:justify-normal md:flex-col md:gap-2">
           {menuItems.map((menuItem, index) => (
-            <li key={index} className="h-full flex items-center md:h-auto">
+            <li
+              key={index}
+              className={`h-full flex items-center md:h-auto ${
+                menuItem.to === '/account' && 'md:hidden'
+              }`}
+            >
               <Link
                 to={menuItem.to}
                 className={`w-full flex flex-col items-center gap-2 p-2 rounded-md transition-all ease-in-out delay-50 md:flex-row ${
@@ -30,6 +36,17 @@ const NavBar: React.FC = () => {
               </Link>
             </li>
           ))}
+          {isActive('/account') && (
+            <li className="hidden h-auto items-center md:flex">
+              <Link
+                to="/account"
+                className="w-full flex flex-col items-center gap-2 p-2 rounded-md transition-all ease-in-out delay-50 md:flex-row bg-primary/20 text-primary hover:bg-accent"
+              >
+                <SquareUserRound className="svg-size" />
+                <span className="text-xs md:text-base">Mi Cuenta</span>
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </aside>

@@ -1,32 +1,35 @@
-import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios'
+import { TRequestOptions } from '@utils/types/request.types'
 
-// Extend Axios Requests with additional token
-interface RequestOptions extends AxiosRequestConfig {
-  token?: string
-}
+const baseURL = import.meta.env.VITE_API_URL as string
 
-const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL as string,
-  headers: {
-    "Content-type": "application/json",
-  },
-})
+export const request = async <T>(options: TRequestOptions): Promise<T> => {
+  const { url, token, data, headers, ...fetchOptions } = options
 
-export const request = async <T>(options: RequestOptions): Promise<T> => {
-  const { token, ...axiosOptions } = options
+  const requestHeaders: Record<string, string> = {
+    'Content-Type': 'application/json',
+    ...(headers as Record<string, string>),
+  }
 
   // Set the authorization header if token is provided
   if (token) {
-    client.defaults.headers.common.Authorization = `Bearer ${token}`
+    requestHeaders['Authorization'] = `Bearer ${token}`
   }
 
-  const onSuccess = (response: AxiosResponse<T>): T => {
-    return response?.data
+  const fetchOptionsWithBody = {
+    ...fetchOptions,
+    headers: requestHeaders,
+    ...(data ? { body: JSON.stringify(data) } : {}), // Add body if data is provided
   }
 
-  const onError = (error: AxiosError): Promise<never> => {
-    return Promise.reject(error.response?.data)
+  const response = await fetch(`${baseURL}${url}`, fetchOptionsWithBody)
+
+  if (!response.ok) {
+    // Handle HTTP errors
+    const errorResponse = await response.json()
+    return Promise.reject(errorResponse)
   }
 
-  return client.request<T>(axiosOptions).then(onSuccess).catch(onError)
+  // Handle successful response
+  const responseData: T = await response.json();
+  return responseData;
 }
