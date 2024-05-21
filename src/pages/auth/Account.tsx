@@ -1,11 +1,42 @@
+import { useNavigate } from 'react-router-dom'
+
 import { AuthLayout } from '@pages/layouts/AuthLayout'
+import { Button } from '@forms/button'
+import { User } from '@utils/types/user.types'
+
+import { useUserStore } from '@/store'
 
 const Account: React.FC = () => {
+  const navigate = useNavigate()
+
+  const { userData, updateUserData, removeUserData } = useUserStore()
+
+  const updatedUserData: Partial<User> = {
+    firstName: 'Bruh',
+    lastName: 'Momento',
+  }
+
+  const handleUpdateProfile = () => {
+    updateUserData(updatedUserData)
+  }
+
   return (
-    <AuthLayout>
-      <div>Mi Cuenta</div>
-    </AuthLayout>
+    <div className="align-center-row gap-3">
+      <h2>
+        Mi Cuenta: {userData?.firstName} {userData?.lastName}
+      </h2>
+      <p>Eres Vendedor? {userData?.isSeller ? 'Si' : 'No'}</p>
+      <Button onClick={handleUpdateProfile}>Actualizar Perfil</Button>
+      <Button
+        onClick={() => {
+          removeUserData()
+          navigate('/')
+        }}
+      >
+        Cerrar Sesion
+      </Button>
+    </div>
   )
 }
 
-export default Account
+export default AuthLayout(Account)

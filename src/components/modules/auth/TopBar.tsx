@@ -19,7 +19,7 @@ const TopBar: React.FC = () => {
   const { userData, removeUserData } = useUserStore()
 
   return (
-    <header className="hidden h-16 px-5 border-b-2 md:flex items-center justify-end gap-4">
+    <header className="hidden h-16 px-5 z-50 border-b-2 md:flex items-center justify-end gap-4 bg-background fixed pl-72 w-full shadow-lg">
       <Button variant="outline" icon={<ShoppingCart className="svg-size" />}>
         Carrito
       </Button>

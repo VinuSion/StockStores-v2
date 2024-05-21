@@ -14,7 +14,7 @@ import {
 
 import { formatTime } from '@utils/numberMethods'
 
-import { useForgotPassword } from '@hooks/services/userService/useForgotPassword'
+import { useForgotPassword } from '@services/userService/useForgotPassword'
 
 const ForgotPassword: React.FC = () => {
   const {

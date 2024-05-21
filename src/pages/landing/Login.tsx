@@ -10,7 +10,7 @@ import { Input } from '@forms/input'
 import { Label } from '@forms/label'
 import { ForgotPassword } from '@modules/landing/ForgotPassword'
 
-import { useLogin } from '@hooks/services/userService/useLogin'
+import { useLogin } from '@services/userService/useLogin'
 
 const Login: React.FC = () => {
   const [passwordShown, setPasswordShown] = useState<boolean>(false)

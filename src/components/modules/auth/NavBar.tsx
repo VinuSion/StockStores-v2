@@ -10,7 +10,7 @@ const NavBar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path
 
   return (
-    <aside className="h-20 w-screen fixed bottom-0 bg-background flex flex-col border-t-2 md:h-full md:w-72 md:bottom-auto md:border-t-0 md:border-r-2">
+    <aside className="h-20 w-screen fixed bottom-0 z-50 bg-background flex flex-col border-t-2 md:h-full md:w-72 md:bottom-auto md:border-t-0 md:border-r-2">
       <div className="p-6 hidden md:flex">
         <SVGFullLogo primaryAccent />
       </div>
@@ -27,12 +27,18 @@ const NavBar: React.FC = () => {
                 to={menuItem.to}
                 className={`w-full flex flex-col items-center gap-2 p-2 rounded-md transition-all ease-in-out delay-50 md:flex-row ${
                   isActive(menuItem.to)
-                    ? 'bg-primary/20 text-primary hover:bg-accent'
-                    : 'hover:bg-accent hover:text-primary'
+                    ? 'bg-primary/20 text-primary active:bg-accent md:hover:bg-accent'
+                    : 'active:bg-accent active:text-primary md:hover:bg-accent md:hover:text-primary'
                 }`}
               >
                 <menuItem.icon className="svg-size" />
-                <span className="text-xs md:text-base">{menuItem.label}</span>
+                <span
+                  className={`text-xs md:text-base ${
+                    isActive(menuItem.to) && 'font-bold'
+                  }`}
+                >
+                  {menuItem.label}
+                </span>
               </Link>
             </li>
           ))}
@@ -40,10 +46,12 @@ const NavBar: React.FC = () => {
             <li className="hidden h-auto items-center md:flex">
               <Link
                 to="/account"
-                className="w-full flex flex-col items-center gap-2 p-2 rounded-md transition-all ease-in-out delay-50 md:flex-row bg-primary/20 text-primary hover:bg-accent"
+                className="w-full flex flex-col items-center gap-2 p-2 rounded-md transition-all ease-in-out delay-50 md:flex-row bg-primary/20 text-primary active:bg-accent md:hover:bg-accent"
               >
                 <SquareUserRound className="svg-size" />
-                <span className="text-xs md:text-base">Mi Cuenta</span>
+                <span className="text-xs md:text-base font-bold">
+                  Mi Cuenta
+                </span>
               </Link>
             </li>
           )}

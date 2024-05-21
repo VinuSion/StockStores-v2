@@ -9,7 +9,7 @@ import { Checkbox } from '@forms/checkbox'
 import { Input } from '@forms/input'
 import { Label } from '@forms/label'
 
-import { useSignup } from '@hooks/services/userService/useSignup'
+import { useSignup } from '@services/userService/useSignup'
 
 const SignUp: React.FC = () => {
   const [passwordShown, setPasswordShown] = useState<boolean>(false)

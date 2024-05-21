@@ -7,7 +7,7 @@ import { Button } from '@forms/button'
 import { Input } from '@forms/input'
 import { Label } from '@forms/label'
 
-import { useResetPassword } from '@hooks/services/userService/useResetPassword'
+import { useResetPassword } from '@services/userService/useResetPassword'
 
 const ResetPassword: React.FC = () => {
   const [passwordShown, setPasswordShown] = useState<boolean>(false)

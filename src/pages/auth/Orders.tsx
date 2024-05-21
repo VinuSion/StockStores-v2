@@ -1,11 +1,7 @@
 import { AuthLayout } from '@pages/layouts/AuthLayout'
 
 const Orders: React.FC = () => {
-  return (
-    <AuthLayout>
-      <div>Pedidos</div>
-    </AuthLayout>
-  )
+  return <div>Pedidos</div>
 }
 
-export default Orders
+export default AuthLayout(Orders)

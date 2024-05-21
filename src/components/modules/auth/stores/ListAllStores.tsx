@@ -1,6 +1,7 @@
+import { StoreCard } from '@modules/auth/stores/StoreCard'
 import { useGetAllStores } from '@services/storeService/useGetAllStores'
 
-const ShowStores = () => {
+const ListAllStores: React.FC = () => {
   const { isLoading, isError, data, error } = useGetAllStores()
 
   if (isLoading) {
@@ -12,16 +13,12 @@ const ShowStores = () => {
   }
 
   return (
-    <div>
+    <>
       {data?.map((store, index) => (
-        <div className="align-center-row" key={index}>
-          <p>{index} - {store.storeName}</p>
-          <p>{index} - {store.storeAddress.address}</p>
-          <p>{index} - {store.storePhoneNumber}</p>
-        </div>
+        <StoreCard key={index} store={store} />
       ))}
-    </div>
+    </>
   )
 }
 
-export { ShowStores }
+export { ListAllStores }
