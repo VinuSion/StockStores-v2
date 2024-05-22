@@ -1,21 +1,21 @@
 import { useQuery } from '@tanstack/react-query'
 import { request } from '@utils/RequestGenerator'
-import { PRODUCTS_ENDPOINT, Product } from '@utils/types/product.types'
+import { PRODUCTS_ENDPOINT, StoreProducts } from '@utils/types/product.types'
 import { useParams } from 'react-router-dom'
 
 const useGetAllStoreProducts = () => {
-  const { storeSlug } = useParams()
+  const { storeSlug } = useParams<{ storeSlug: string }>()
 
-  const { isLoading, isError, data, error } = useQuery<Product, Error>({
+  const { isLoading, isError, data, error } = useQuery<StoreProducts, Error>({
     queryKey: [`all-products-from-store-${storeSlug}`],
     queryFn: () =>
-      request<Product>({
-        url: `${PRODUCTS_ENDPOINT}/${storeSlug}/all`,
+      request<StoreProducts>({
+        url: `${PRODUCTS_ENDPOINT}/store-slug/${storeSlug}`,
         method: 'GET',
       }),
   })
 
-  return { isLoading, isError, data, error }
+  return { storeSlug, isLoading, isError, data, error }
 }
 
 export { useGetAllStoreProducts }

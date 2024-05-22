@@ -1,5 +1,5 @@
 import { AuthLayout } from '@pages/layouts/AuthLayout'
-import { ListAllStores } from '@/components/modules/auth/stores/ListAllStores'
+import { ListAllStores } from '@modules/auth/stores/ListAllStores'
 
 const Stores: React.FC = () => {
   return (

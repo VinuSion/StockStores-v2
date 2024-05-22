@@ -4,7 +4,7 @@ import { STORES_ENDPOINT, Store } from '@utils/types/store.types'
 import { useParams } from 'react-router-dom'
 
 const useGetStore = () => {
-  const { storeSlug } = useParams()
+  const { storeSlug } = useParams<{ storeSlug: string }>()
 
   const { isLoading, isError, data, error } = useQuery<Store, Error>({
     queryKey: [`store-${storeSlug}`],
@@ -15,7 +15,7 @@ const useGetStore = () => {
       }),
   })
 
-  return { isLoading, isError, data, error }
+  return { storeSlug, isLoading, isError, data, error }
 }
 
 export { useGetStore }

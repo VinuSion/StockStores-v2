@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Store, Contact, Phone, Home, ShoppingBasket } from 'lucide-react'
 
 import { AuthLayout } from '@pages/layouts/AuthLayout'
@@ -17,8 +17,7 @@ import { formatPhoneNumber } from '@utils/stringMethods'
 import { useGetStore } from '@services/storeService/useGetStore'
 
 const StoreDetailsPage: React.FC = () => {
-  const location = useLocation()
-  const { isLoading, isError, data, error } = useGetStore()
+  const { storeSlug, isLoading, isError, data, error } = useGetStore()
 
   if (isLoading) {
     return <h1>Loading...</h1>
@@ -30,7 +29,7 @@ const StoreDetailsPage: React.FC = () => {
 
   return (
     <section className="flex justify-center my-5 mx-4">
-      <div className="flex flex-col gap-4 w-full max-w-[50rem] mb-5">
+      <div className="flex flex-col gap-4 w-full max-w-[50rem] my-5">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -101,7 +100,7 @@ const StoreDetailsPage: React.FC = () => {
             </span>
           </Link>
         </div>
-        <Link to={`${location.pathname}/products`} className="mt-2">
+        <Link to={`/stores/${storeSlug}/products`} className="mt-2">
           <Button
             className="w-full sm:w-fit"
             icon={<ShoppingBasket className="svg-size" />}

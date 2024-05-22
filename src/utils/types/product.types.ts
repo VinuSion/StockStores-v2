@@ -16,3 +16,8 @@ export type Product = {
   imagesCollectionURL: string[]
   isFeatured: boolean
 }
+
+export type StoreProducts = {
+  storeName: string
+  allProductsFromStore: Product[]
+}
