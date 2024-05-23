@@ -52,9 +52,9 @@ const StoreProducts: React.FC = () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <h1 className="text-2xl font-extrabold">Productos - {data?.storeName}</h1>
+        <h1 className="text-2xl md:text-3xl font-extrabold">Productos - {data?.storeName}</h1>
       </div>
-      <div className="align-center-row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10 w-full px-4 md:px-8">
+      <div className="align-center-row grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8 md:gap-10 w-full px-4 md:px-8">
         <ListAllStoreProducts />
       </div>
     </section>

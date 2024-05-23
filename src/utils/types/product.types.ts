@@ -21,3 +21,9 @@ export type StoreProducts = {
   storeName: string
   allProductsFromStore: Product[]
 }
+
+export type ProductResponse = {
+  storeSlug: string,
+  storeName: string,
+  product: Product,
+}

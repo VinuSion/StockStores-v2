@@ -5,18 +5,25 @@ import { Badge } from '@ui/badge'
 import { Rating } from '@ui/rating'
 import { Button } from '@forms/button'
 import { Product } from '@utils/types/product.types'
+import { formatPrice } from '@utils/numberMethods'
 
 interface ProductCardProps {
   product: Product
   pathname: string
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, pathname = "/stores" }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  pathname = '/stores',
+}) => {
   return (
-    <div className="flex flex-col justify-around gap-3 md:gap-4 p-3 border-2 rounded-md shadow-lg h-full">
+    <div className="flex flex-col justify-around gap-2 md:gap-3 p-3 border-2 rounded-md shadow-lg h-full">
       <img
         className="rounded-md object-cover aspect-video"
-        src={product?.leadImageURL || ''}
+        src={
+          product?.leadImageURL ||
+          'https://github.com/VinuSion/StockStores-v2/assets/56313573/2b33a407-9214-4847-a75b-4e70808c6bae'
+        }
         alt={`${product?.productName} product photo`}
       />
       <div className="flex flex-wrap items-center gap-2 w-full">
@@ -30,12 +37,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, pathname = "/stores"
         <span>{product?.reviewsAmount || 0} reseñas</span>
       </div>
       <div className="flex">
-        <span className="text-xl font-bold">${product?.productPrice}</span>
+        <p className="text-xl font-bold">
+          ${formatPrice(product?.productPrice)}
+          <span className="font-normal text-sm mx-1">COP</span>
+        </p>
       </div>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 mb-3">
+      <div className="flex flex-col gap-3 mb-3">
         <Button icon={<ShoppingCart className="svg-size" />}>Agregar</Button>
         <Link to={`${pathname}/${product?.productSlug}`}>
-          <Button variant="outline" iconRight icon={<ArrowRight className="svg-size" />}>Ver Producto</Button>
+          <Button
+            variant="outline"
+            iconRight
+            icon={<ArrowRight className="svg-size" />}
+            className="w-full"
+          >
+            Ver Producto
+          </Button>
         </Link>
       </div>
     </div>

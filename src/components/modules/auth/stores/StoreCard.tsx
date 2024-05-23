@@ -20,7 +20,7 @@ const StoreCard: React.FC<StoreCardProps> = ({ store }) => {
     <div className="flex flex-col justify-around gap-3 md:gap-4 p-3 border-2 rounded-md shadow-lg h-full">
       <img
         className="rounded-md object-cover aspect-video"
-        src={store?.storeImageURL || ''}
+        src={store?.storeImageURL || 'https://github.com/VinuSion/StockStores-v2/assets/56313573/2b33a407-9214-4847-a75b-4e70808c6bae'}
         alt={`${store?.storeName} store photo`}
       />
       <div className="flex items-center gap-2 w-full">

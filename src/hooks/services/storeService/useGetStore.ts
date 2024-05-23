@@ -1,7 +1,7 @@
+import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { request } from '@utils/RequestGenerator'
 import { STORES_ENDPOINT, Store } from '@utils/types/store.types'
-import { useParams } from 'react-router-dom'
 
 const useGetStore = () => {
   const { storeSlug } = useParams<{ storeSlug: string }>()

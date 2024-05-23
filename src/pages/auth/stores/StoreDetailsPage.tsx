@@ -43,11 +43,11 @@ const StoreDetailsPage: React.FC = () => {
         </Breadcrumb>
         <div className="flex items-center py-5">
           <Store className="h-6 w-6 mr-2" />
-          <h1 className="text-2xl font-extrabold">{data?.storeName}</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold">{data?.storeName}</h1>
         </div>
         <img
           className="rounded-md object-cover aspect-video outline outline-primary outline-offset-4 shadow-lg"
-          src={data?.storeImageURL || ''}
+          src={data?.storeImageURL || 'https://github.com/VinuSion/StockStores-v2/assets/56313573/2b33a407-9214-4847-a75b-4e70808c6bae'}
           alt={`${data?.storeName} store photo`}
         />
         <div className="flex items-center gap-2 mt-5 w-fit">
@@ -73,7 +73,7 @@ const StoreDetailsPage: React.FC = () => {
         <Separator className="my-5" />
         <div className="flex items-center">
           <Contact className="h-6 w-6 mr-2" />
-          <h2 className="text-2xl font-extrabold">Info. de Contacto</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold">Info. de Contacto</h2>
         </div>
         <div className="flex flex-col md:items-center md:flex-row gap-2 w-full">
           <span className="text-lg font-semibold">Direccion:</span>
