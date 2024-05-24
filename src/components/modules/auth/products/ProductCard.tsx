@@ -7,6 +7,8 @@ import { Button } from '@forms/button'
 import { Product } from '@utils/types/product.types'
 import { formatPrice } from '@utils/numberMethods'
 
+import { useShoppingCartStore } from '@/store'
+
 interface ProductCardProps {
   product: Product
   pathname: string
@@ -16,6 +18,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   product,
   pathname = '/stores',
 }) => {
+  const { addProduct, isProductInCart } = useShoppingCartStore()
+
   return (
     <div className="flex flex-col justify-around gap-2 md:gap-3 p-3 border-2 rounded-md shadow-lg h-full">
       <img
@@ -43,7 +47,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </p>
       </div>
       <div className="flex flex-col gap-3 mb-3">
-        <Button icon={<ShoppingCart className="svg-size" />}>Agregar</Button>
+        {isProductInCart(product._id) ? (
+          <div className="flex justify-center w-full p-2 rounded-md bg-accent text-primary font-semibold select-none pointer-events-none">Ya está en tu Carrito</div>
+        ) : (
+          <Button
+            icon={<ShoppingCart className="svg-size" />}
+            onClick={() => addProduct(product)}
+          >
+            Agregar
+          </Button>
+        )}
         <Link to={`${pathname}/${product?.productSlug}`}>
           <Button
             variant="outline"

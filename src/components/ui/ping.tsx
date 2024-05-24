@@ -7,7 +7,7 @@ export interface PingProps extends React.PropsWithChildren {
 }
 
 const Ping: React.FC<PingProps> = ({
-  color = 'bg-primary',
+  color = 'bg-rose-600',
   outline = false,
   enabled = true,
   ...props

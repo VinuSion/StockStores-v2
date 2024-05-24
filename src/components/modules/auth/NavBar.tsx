@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
-import { SquareUserRound } from 'lucide-react'
+import { UserRound } from 'lucide-react'
 
+import { CartButton } from '@modules/auth/CartButton'
 import { SVGFullLogo } from '@ui/svg-logo'
 import { menuItems } from '@utils/constants/navBarList'
 
@@ -14,7 +15,7 @@ const NavBar: React.FC = () => {
       <div className="p-6 hidden md:flex">
         <SVGFullLogo primaryAccent />
       </div>
-      <nav className="flex-1 md:p-4">
+      <nav className="flex-1 md:p-4 relative">
         <ul className="h-full flex justify-center gap-3 md:justify-normal md:flex-col md:gap-2">
           {menuItems.map((menuItem, index) => (
             <li
@@ -31,7 +32,7 @@ const NavBar: React.FC = () => {
                     : 'active:bg-accent active:text-primary md:hover:bg-accent md:hover:text-primary'
                 }`}
               >
-                <menuItem.icon className="svg-size" />
+                <menuItem.icon fill={isActive(menuItem.to) ? "#17ab75" : "none"} className={`svg-size ${isActive(menuItem.to) && "text-background"}`} />
                 <span
                   className={`text-xs md:text-base ${
                     isActive(menuItem.to) && 'font-bold'
@@ -48,7 +49,7 @@ const NavBar: React.FC = () => {
                 to="/account"
                 className="w-full flex flex-col items-center gap-2 p-2 rounded-md transition-all ease-in-out delay-50 md:flex-row bg-primary/20 text-primary active:bg-accent md:hover:bg-accent"
               >
-                <SquareUserRound className="svg-size" />
+                <UserRound className="svg-size text-background" fill="#17ab75" />
                 <span className="text-xs md:text-base font-bold">
                   Mi Cuenta
                 </span>
@@ -56,6 +57,9 @@ const NavBar: React.FC = () => {
             </li>
           )}
         </ul>
+        <div className="md:hidden">
+          <CartButton />
+        </div>
       </nav>
     </aside>
   )

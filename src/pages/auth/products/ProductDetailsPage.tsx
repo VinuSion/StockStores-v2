@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { BookMarked, ShoppingCart } from 'lucide-react'
 
 import { AuthLayout } from '@pages/layouts/AuthLayout'
+import { ProductReviews } from '@modules/auth/reviews/ProductReviews'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,8 +19,11 @@ import { formatPrice } from '@utils/numberMethods'
 
 import { useGetProduct } from '@services/productService/useGetProduct'
 
+import { useShoppingCartStore } from '@/store'
+
 const ProductDetailsPage: React.FC = () => {
   const { isLoading, isError, data, error } = useGetProduct()
+  const { addProduct, isProductInCart } = useShoppingCartStore()
 
   if (isLoading) {
     return <h1>Loading...</h1>
@@ -30,7 +34,7 @@ const ProductDetailsPage: React.FC = () => {
   }
 
   return (
-    <section className="my-5">
+    <section className="my-5 pb-5">
       <div className="flex flex-col gap-5 px-4 md:px-8 py-5">
         <Breadcrumb>
           <BreadcrumbList>
@@ -69,7 +73,9 @@ const ProductDetailsPage: React.FC = () => {
       </div>
       <div className="w-full px-4 md:px-8">
         <div className="flex flex-wrap items-center gap-2 w-full pb-3">
-          <h1 className="text-2xl md:text-3xl font-bold">{data?.product?.productName}</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">
+            {data?.product?.productName}
+          </h1>
           {data?.product?.isFeatured && <Badge>Destacado</Badge>}
         </div>
         <div className="my-3 flex flex-col gap-4 xl:my-5 xl:flex-row xl:gap-8">
@@ -83,7 +89,7 @@ const ProductDetailsPage: React.FC = () => {
               alt={`${data?.product?.productName} product photo`}
             />
           </div>
-          <div className="w-full xl:w-2/5 rounded-md border-2 p-3 flex flex-col gap-5 h-fit">
+          <div className="w-full xl:w-2/5 rounded-md border-2 p-3 flex flex-col gap-5 h-fit shadow-lg">
             <div className="w-full flex justify-between bg-accent rounded-md p-4">
               <p className="w-full font-bold text-2xl">
                 ${formatPrice(data?.product?.productPrice || 0)}
@@ -129,13 +135,29 @@ const ProductDetailsPage: React.FC = () => {
               <p className="">{data?.product?.productDescription || 'N/A'}</p>
             </div>
             <Separator className="my-2" />
-            <Button
-              className="w-full mb-3"
-              icon={<ShoppingCart className="svg-size" />}
-            >
-              Agregar Al Carrito
-            </Button>
+            {isProductInCart(data?.product._id!) ? (
+              <div className="flex justify-center w-full p-2 rounded-md bg-accent text-primary font-semibold select-none pointer-events-none">
+                Ya está en tu Carrito
+              </div>
+            ) : (
+              <Button
+                className="w-full mb-3"
+                icon={<ShoppingCart className="svg-size" />}
+                onClick={() => addProduct(data?.product!)}
+              >
+                Agregar Al Carrito
+              </Button>
+            )}
           </div>
+        </div>
+      </div>
+      <div className="w-full px-4 md:px-8">
+        <Separator className="mb-2 mt-8" />
+        <div className="flex flex-wrap items-center gap-2 w-full py-3">
+          <h1 className="text-2xl md:text-3xl font-bold">Reseñas</h1>
+        </div>
+        <div>
+          <ProductReviews productId={data?.product?._id} />
         </div>
       </div>
     </section>

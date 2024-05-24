@@ -2,6 +2,8 @@ import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 import { UserStore, User } from '@utils/types/user.types'
 import { Theme, ThemeProviderState } from '@utils/types/theme.types'
+import { ShoppingCartState } from '@utils/types/cart.types'
+import { Product } from '@utils/types/product.types'
 
 export const useUserStore = create<UserStore>()(
   devtools(
@@ -52,6 +54,69 @@ export const useThemeStore = create<ThemeProviderState>()(
       }),
       {
         name: 'ui-theme',
+      }
+    )
+  )
+)
+
+export const useShoppingCartStore = create<ShoppingCartState>()(
+  devtools(
+    persist(
+      (set, get) => ({
+        cart: [],
+        addProduct: (product: Product) => {
+          set((state) => {
+            if (state.cart.length === 0) {
+              return { cart: [{ product, quantity: 1 }] }
+            }
+            const existingProduct = state.cart.find(
+              (item) => item.product._id === product._id
+            )
+            if (!existingProduct) {
+              return { cart: [...state.cart, { product, quantity: 1 }] }
+            }
+            return state
+          })
+        },
+        removeProduct: (productId: string) => {
+          set((state) => ({
+            cart: state.cart.filter((item) => item.product._id !== productId),
+          }))
+        },
+        incrementQuantity: (productId: string) => {
+          set((state) => ({
+            cart: state.cart.map((item) =>
+              item.product._id === productId
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            ),
+          }))
+        },
+        decrementQuantity: (productId: string) => {
+          set((state) => ({
+            cart: state.cart
+              .map((item) =>
+                item.product._id === productId && item.quantity > 1
+                  ? { ...item, quantity: item.quantity - 1 }
+                  : item
+              )
+              .filter((item) => item.quantity > 0),
+          }))
+        },
+        isCartEmpty: () => {
+          const state = get()
+          return state.cart.length === 0
+        },
+        isProductInCart: (productId: string) => {
+          const state = get()
+          return state.cart.some((item) => item.product._id === productId)
+        },
+        clearCart: () => {
+          set({ cart: [] })
+        },
+      }),
+      {
+        name: 'shopping-cart',
       }
     )
   )

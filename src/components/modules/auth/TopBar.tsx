@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { ShoppingCart, SquareUserRound, LogOut } from 'lucide-react'
+import { UserRound, LogOut } from 'lucide-react'
 
+import { CartButton } from '@modules/auth/CartButton'
 import { Avatar, AvatarImage, AvatarFallback } from '@ui/avatar'
 import {
   DropdownMenu,
@@ -10,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@ui/dropdown-menu'
-import { Button } from '@forms/button'
 
 import { useUserStore } from '@/store'
 
@@ -20,9 +20,7 @@ const TopBar: React.FC = () => {
 
   return (
     <header className="hidden h-16 px-5 z-50 border-b-2 md:flex items-center justify-end gap-4 bg-background fixed pl-72 w-full shadow-lg">
-      <Button variant="outline" icon={<ShoppingCart className="svg-size" />}>
-        Carrito
-      </Button>
+      <CartButton />
       <div className="flex flex-col justify-center items-center h-full">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -41,7 +39,7 @@ const TopBar: React.FC = () => {
             <DropdownMenuGroup>
               <Link to="/account" className="flex">
                 <DropdownMenuItem className="w-full cursor-pointer">
-                  <SquareUserRound className="mr-2 svg-size" />
+                  <UserRound className="mr-2 svg-size" />
                   <span>Mi Cuenta</span>
                 </DropdownMenuItem>
               </Link>

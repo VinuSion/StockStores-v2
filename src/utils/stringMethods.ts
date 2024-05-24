@@ -21,3 +21,31 @@ export const formatPhoneNumber = (phoneNumber: string): string => {
 
   return `${part1}-${part2} (${part3})`
 }
+
+export const formatDate = (dateString: string): string => {
+  const date = new Date(dateString)
+
+  const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+  const day = date.getUTCDate()
+  const month = monthNames[date.getUTCMonth()]
+  const year = date.getUTCFullYear()
+
+  let hours = date.getUTCHours()
+  const minutes = date.getUTCMinutes().toString().padStart(2, '0')
+  const ampm = hours >= 12 ? 'PM' : 'AM'
+  hours = hours % 12
+  hours = hours ? hours : 12
+
+  return `${month} ${day}, ${year} - ${hours}:${minutes} ${ampm}`
+}
+
+export const compareDates = (createdAt: string, updatedAt: string): string => {
+  const createdDate = new Date(createdAt)
+  const updatedDate = new Date(updatedAt)
+
+  if (createdDate.getTime() === updatedDate.getTime()) {
+    return formatDate(createdAt)
+  } else {
+    return `${formatDate(updatedAt)} (editado)`
+  }
+}

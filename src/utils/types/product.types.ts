@@ -1,7 +1,7 @@
 export const PRODUCTS_ENDPOINT: string = '/products'
 
 export type Product = {
-  id: string
+  _id: string
   storeId: string
   productSlug: string
   productName: string

@@ -7,7 +7,7 @@ export type StoreAddress = {
 }
 
 export type Store = {
-  id: string
+  _id: string
   sellerId: string
   sellerFirstName: string
   sellerLastName: string
