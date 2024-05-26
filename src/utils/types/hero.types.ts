@@ -3,7 +3,7 @@ export type Hero = {
   phrase: string
   title: string
   info?: string
-  imag: string
+  image: string
   elementposition: string
-  children: JSX.Element|JSX.Element[]
+  children?: JSX.Element|JSX.Element[]
 }

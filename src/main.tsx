@@ -15,12 +15,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
-      <React.StrictMode> {/* linea 18 y 23 - Sergio R */}
+      <React.StrictMode>
         <App />
 
         <Toaster />
         {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-        </React.StrictMode>
+      </React.StrictMode>
       </QueryClientProvider>
     </ThemeProvider>
   </React.StrictMode>

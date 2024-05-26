@@ -20,8 +20,8 @@ const Home: React.FC = () => {
                 phrase='Bienvenido a SctockStores' 
                 title='Tu tienda de barrio ¡online!' 
                 info='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book' 
-                elementposition='' // XDDDDDDDDDD RE TROLL
-                imag='store1.png'
+                elementposition=''
+                image='store1.png'
               >
                 <Link to="/login">
                   <Button className='my-3'>Comenzar</Button>
@@ -33,11 +33,10 @@ const Home: React.FC = () => {
             <HeroSection
                 phrase='A la puerta de tu casa' 
                 title='Domicilios incluidos' 
-                info='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.' 
-                elementposition='flex-row-reverse' // XDDDDDDDDDD RE TROLL
-                imag='Domicilio.png'
+                info='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.' 
+                elementposition='flex-row-reverse'
+                image='Domicilio.png'
               >
-                <></>
             </HeroSection>
           </section>
 
@@ -46,10 +45,9 @@ const Home: React.FC = () => {
                 phrase='Incluye' 
                 title='Dasboard del vendedor' 
                 info='' 
-                elementposition='flex-col-reverse' // XDDDDDDDDDD RE TROLL
-                imag='dashboardimg.png'
+                elementposition='flex-col-reverse'
+                image='dashboardimg.png'
               >
-                <></>
             </HeroSection>
           </section>
         </article>

@@ -7,7 +7,7 @@ import React from 'react'
 
 // import { Button } from '@forms/button'
 
-const HeroSection: React.FC<Hero> = ({ phrase, title, info, imag, children, elementposition }) => {
+const HeroSection: React.FC<Hero> = ({ phrase, title, info, image, children, elementposition }) => {
   return (
     <section className={`flex ${elementposition} items-center justify-between`}>
       <div className='w-2/6'> 
@@ -17,7 +17,7 @@ const HeroSection: React.FC<Hero> = ({ phrase, title, info, imag, children, elem
         <>{children}</>
       </div>
       <div className='w-2/3'>
-        <img src={`/${imag}`} className='w-4/5 h-4/5'/>
+        <img src={`/${image}`} className='w-4/5 h-4/5'/>
       </div>
     </section>
   )
