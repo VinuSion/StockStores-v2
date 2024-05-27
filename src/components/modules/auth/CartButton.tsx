@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom'
-import { ShoppingCart, ArrowRight } from 'lucide-react'
+import { ShoppingCart, CreditCard, CircleX } from 'lucide-react'
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter,
 } from '@ui/dialog'
 import { Ping } from '@ui/ping'
 import { Button } from '@forms/button'
@@ -35,22 +36,30 @@ const CartButton: React.FC = () => {
             <ShoppingCart className="svg-size" />
             Carrito de Compras
           </DialogTitle>
-          <DialogDescription className="text-left text-xs sm:text-sm">
-            {!isCartEmpty() ? (
-              <div>Aqui estan tus productos:</div>
-            ) : (
-              <div className="flex flex-col gap-3 my-3">
-                <span className="text-sm md:text-base">Aun no tienes productos en tu carrito.</span>
-                <Link to="/stores" className="w-fit">
-                  <Button iconRight icon={<ArrowRight className="svg-size" />}>
-                    Ir a Tiendas
-                  </Button>
-                </Link>
-              </div>
-            )}
-          </DialogDescription>
+          {isCartEmpty() && (
+            <DialogDescription className="text-left text-xs sm:text-sm">
+              <span className="text-sm md:text-base">
+                Aun no tienes productos en tu carrito.
+              </span>
+            </DialogDescription>
+          )}
         </DialogHeader>
+
         {!isCartEmpty() && <div>Cart items</div>}
+
+        <DialogFooter>
+          {isCartEmpty() ? (
+            <DialogClose asChild>
+              <Button type="button" variant="outline" icon={<CircleX className="svg-size" />}>
+                Cerrar
+              </Button>
+            </DialogClose>
+          ) : (
+            <Button type="button" icon={<CreditCard className="svg-size" />}>
+              Proceder al Pago
+            </Button>
+          )}
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   )

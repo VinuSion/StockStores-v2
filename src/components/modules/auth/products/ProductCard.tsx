@@ -4,9 +4,11 @@ import { ShoppingCart, ArrowRight } from 'lucide-react'
 import { Badge } from '@ui/badge'
 import { Rating } from '@ui/rating'
 import { Button } from '@forms/button'
+
 import { Product } from '@utils/types/product.types'
 import { formatPrice } from '@utils/numberMethods'
 
+import { useToast } from '@hooks/useToast'
 import { useShoppingCartStore } from '@/store'
 
 interface ProductCardProps {
@@ -18,7 +20,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
   product,
   pathname = '/stores',
 }) => {
-  const { addProduct, isProductInCart } = useShoppingCartStore()
+  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } = useShoppingCartStore()
+  const { toast } = useToast()
+
+  const addProductToCartSafe = (product: Product) => {
+    if (isCartEmpty()) {
+      addProduct(product)
+    } else {
+      if (!checkStoreId(product)) {
+        toast({
+          title: `❌ Error al Agregar "${product?.productName}"`,
+          description: 'Solo puedes agregar productos de la misma Tienda.',
+        })
+      } else {
+        addProduct(product)
+      }
+    }
+  }
 
   return (
     <div className="flex flex-col justify-around gap-2 md:gap-3 p-3 border-2 rounded-md shadow-lg h-full">
@@ -52,7 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         ) : (
           <Button
             icon={<ShoppingCart className="svg-size" />}
-            onClick={() => addProduct(product)}
+            onClick={() => addProductToCartSafe(product)}
           >
             Agregar
           </Button>

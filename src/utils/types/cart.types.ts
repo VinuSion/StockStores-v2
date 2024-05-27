@@ -7,6 +7,7 @@ export type CartItem = {
 
 export interface ShoppingCartState {
   cart: CartItem[]
+  checkStoreId: (product: Product) => boolean
   addProduct: (product: Product) => void
   removeProduct: (productId: string) => void
   incrementQuantity: (productId: string) => void
