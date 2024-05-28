@@ -15,15 +15,32 @@ import { Separator } from '@ui/separator'
 import { Rating } from '@ui/rating'
 import { Button } from '@forms/button'
 
+import { Product } from '@utils/types/product.types'
 import { formatPrice } from '@utils/numberMethods'
 
+import { useToast } from '@hooks/useToast'
 import { useGetProduct } from '@services/productService/useGetProduct'
-
 import { useShoppingCartStore } from '@/store'
 
 const ProductDetailsPage: React.FC = () => {
   const { isLoading, isError, data, error } = useGetProduct()
-  const { addProduct, isProductInCart } = useShoppingCartStore()
+  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } = useShoppingCartStore()
+  const { toast } = useToast()
+
+  const addProductToCartSafe = (product: Product) => {
+    if (isCartEmpty()) {
+      addProduct(product)
+    } else {
+      if (!checkStoreId(product)) {
+        toast({
+          title: `❌ Error al Agregar "${product?.productName}"`,
+          description: 'Solo puedes agregar productos de la misma Tienda.',
+        })
+      } else {
+        addProduct(product)
+      }
+    }
+  }
 
   if (isLoading) {
     return <h1>Loading...</h1>
@@ -143,7 +160,7 @@ const ProductDetailsPage: React.FC = () => {
               <Button
                 className="w-full mb-3"
                 icon={<ShoppingCart className="svg-size" />}
-                onClick={() => addProduct(data?.product!)}
+                onClick={() => addProductToCartSafe(data?.product!)}
               >
                 Agregar Al Carrito
               </Button>

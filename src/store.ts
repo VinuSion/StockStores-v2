@@ -64,6 +64,10 @@ export const useShoppingCartStore = create<ShoppingCartState>()(
     persist(
       (set, get) => ({
         cart: [],
+        checkStoreId: (product: Product) => {
+          const state = get()
+          return state.cart.every(item => item.product.storeId === product.storeId)
+        },
         addProduct: (product: Product) => {
           set((state) => {
             if (state.cart.length === 0) {
