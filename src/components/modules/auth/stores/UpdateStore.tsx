@@ -18,7 +18,7 @@ const UpdateStore: React.FC<IStoreProps> = ({ store }) => {
       <div className="flex items-center mb-3">
         <SquarePen className="h-6 w-6 mr-2" />
         <h2 className="text-2xl md:text-3xl font-extrabold">
-          Cambiar Datos de Tienda
+          Modificar Datos de Tienda
         </h2>
       </div>
       <form onSubmit={handleSubmit} className="w-full">

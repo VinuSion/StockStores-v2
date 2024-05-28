@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BookMarked, ShoppingCart } from 'lucide-react'
+import { Shapes, ShoppingCart } from 'lucide-react'
 
 import { AuthLayout } from '@pages/layouts/AuthLayout'
 import { ProductReviews } from '@modules/auth/reviews/ProductReviews'
@@ -140,7 +140,7 @@ const ProductDetailsPage: React.FC = () => {
               <Badge
                 className="py-2"
                 variant="outline"
-                icon={<BookMarked className="h-4 w-4 mr-1" />}
+                icon={<Shapes className="h-4 w-4 mr-1" />}
               >
                 {data?.product?.productCategory}
               </Badge>

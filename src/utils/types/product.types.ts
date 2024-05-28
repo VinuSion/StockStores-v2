@@ -17,6 +17,10 @@ export type Product = {
   isFeatured: boolean
 }
 
+export interface IProductProps {
+  product: Product
+}
+
 export type StoreProducts = {
   storeName: string
   allProductsFromStore: Product[]
