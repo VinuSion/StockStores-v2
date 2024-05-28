@@ -19,3 +19,7 @@ export type Store = {
   storeAddress: StoreAddress
   storeImageURL: string
 }
+
+export interface IStoreProps {
+  store: Store
+}

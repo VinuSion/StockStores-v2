@@ -12,3 +12,7 @@ export type Review = {
   createdAt: string
   updatedAt: string
 }
+
+export interface ReviewCardProps {
+  review: Review
+}

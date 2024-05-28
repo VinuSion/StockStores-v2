@@ -41,7 +41,7 @@ const LandingNav: React.FC = () => {
           <li>
             <Link to="/login">
               <Button className="text-white hover:bg-white hover:text-primary">
-                Iniciar
+                Ingresar
               </Button>
             </Link>
           </li>

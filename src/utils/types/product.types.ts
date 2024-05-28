@@ -27,3 +27,12 @@ export type ProductResponse = {
   storeName: string,
   product: Product,
 }
+
+export interface ProductCardProps {
+  product: Product
+  pathname: string
+}
+
+export interface ProductReviewsProps {
+  productId: string | undefined
+}

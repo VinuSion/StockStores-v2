@@ -5,16 +5,12 @@ import { Badge } from '@ui/badge'
 import { Rating } from '@ui/rating'
 import { Button } from '@forms/button'
 
-import { Product } from '@utils/types/product.types'
+import { Product, ProductCardProps } from '@utils/types/product.types'
 import { formatPrice } from '@utils/numberMethods'
+import { FALLBACK_IMAGE } from '@utils/constants/errorMessages'
 
 import { useToast } from '@hooks/useToast'
 import { useShoppingCartStore } from '@/store'
-
-interface ProductCardProps {
-  product: Product
-  pathname: string
-}
 
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
@@ -44,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         className="rounded-md object-cover aspect-video"
         src={
           product?.leadImageURL ||
-          'https://github.com/VinuSion/StockStores-v2/assets/56313573/2b33a407-9214-4847-a75b-4e70808c6bae'
+          FALLBACK_IMAGE
         }
         alt={`${product?.productName} product photo`}
       />

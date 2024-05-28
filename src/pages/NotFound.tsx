@@ -1,24 +1,20 @@
 import { Link } from 'react-router-dom'
 
 import { Button } from '@forms/button'
-import { User } from '@utils/types/user.types'
-
-interface NotFoundProps {
-  userData: User | null
-}
+import { NotFoundProps } from '@utils/types/user.types'
 
 const NotFound: React.FC<NotFoundProps> = ({ userData }) => {
   return (
     <div className="align-center flex-col gap-4 mt-5">
-      404 - Page Not Found
-      <Link to={userData ? '/stores' : '/'}>
+      404 - Pagina Equivocada
+      <Link to={userData ? userData?.isSeller ? '/dashboard' : '/stores' : '/'}>
         <Button>
-          Return to{' '}
+          Regresar a{' '}
           {userData
             ? userData?.isSeller
-              ? 'Dashboard Page'
-              : 'Stores Page'
-            : 'Home Page'}
+              ? 'Dashboard'
+              : 'Tiendas'
+            : 'Inicio'}
         </Button>
       </Link>
     </div>

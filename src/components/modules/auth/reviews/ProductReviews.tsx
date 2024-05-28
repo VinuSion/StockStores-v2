@@ -1,9 +1,6 @@
 import { ReviewCard } from '@modules/auth/reviews/ReviewCard'
 import { useGetReviews } from '@services/reviewService/useGetReviews'
-
-interface ProductReviewsProps {
-  productId: string | undefined
-}
+import { ProductReviewsProps } from '@utils/types/product.types'
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ productId }) => {
   const { isLoading, isError, data, error } = useGetReviews(productId)

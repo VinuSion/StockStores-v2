@@ -13,6 +13,7 @@ import {
 import { Separator } from '@ui/separator'
 import { Button } from '@forms/button'
 import { formatPhoneNumber } from '@utils/stringMethods'
+import { FALLBACK_IMAGE } from '@utils/constants/errorMessages'
 
 import { useGetStore } from '@services/storeService/useGetStore'
 
@@ -47,7 +48,7 @@ const StoreDetailsPage: React.FC = () => {
         </div>
         <img
           className="rounded-md object-cover aspect-video outline outline-primary outline-offset-4 shadow-lg"
-          src={data?.storeImageURL || 'https://github.com/VinuSion/StockStores-v2/assets/56313573/2b33a407-9214-4847-a75b-4e70808c6bae'}
+          src={data?.storeImageURL || FALLBACK_IMAGE}
           alt={`${data?.storeName} store photo`}
         />
         <div className="flex items-center gap-2 mt-5 w-fit">

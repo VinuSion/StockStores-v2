@@ -17,6 +17,7 @@ import { Button } from '@forms/button'
 
 import { Product } from '@utils/types/product.types'
 import { formatPrice } from '@utils/numberMethods'
+import { FALLBACK_IMAGE } from '@utils/constants/errorMessages'
 
 import { useToast } from '@hooks/useToast'
 import { useGetProduct } from '@services/productService/useGetProduct'
@@ -24,7 +25,8 @@ import { useShoppingCartStore } from '@/store'
 
 const ProductDetailsPage: React.FC = () => {
   const { isLoading, isError, data, error } = useGetProduct()
-  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } = useShoppingCartStore()
+  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } =
+    useShoppingCartStore()
   const { toast } = useToast()
 
   const addProductToCartSafe = (product: Product) => {
@@ -99,10 +101,7 @@ const ProductDetailsPage: React.FC = () => {
           <div className="w-full xl:w-3/5">
             <img
               className="rounded-md object-cover aspect-video outline outline-primary outline-offset-4 shadow-lg"
-              src={
-                data?.product?.leadImageURL ||
-                'https://github.com/VinuSion/StockStores-v2/assets/56313573/2b33a407-9214-4847-a75b-4e70808c6bae'
-              }
+              src={data?.product?.leadImageURL || FALLBACK_IMAGE}
               alt={`${data?.product?.productName} product photo`}
             />
           </div>

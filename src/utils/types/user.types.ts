@@ -21,3 +21,12 @@ export interface UserStore {
   updateUserData: (user: Partial<User>) => void
   removeUserData: () => void
 }
+
+export interface NotFoundProps {
+  userData: User | null
+}
+
+// Seller types & interfaces
+export interface SellerStoresProps {
+  sellerId: string
+}

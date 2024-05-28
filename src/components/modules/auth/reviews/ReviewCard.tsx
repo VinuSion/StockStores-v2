@@ -2,11 +2,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '@ui/avatar'
 import { Rating } from '@ui/rating'
 
 import { compareDates } from '@utils/stringMethods'
-import { Review } from '@utils/types/review.types'
-
-interface ReviewCardProps {
-  review: Review
-}
+import { ReviewCardProps } from '@utils/types/review.types'
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
   return (
