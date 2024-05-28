@@ -60,10 +60,10 @@ const ManageStoreProducts: React.FC = () => {
         </h1>
       </div>
       <CreateProduct />
-      <div className="align-center-row grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8 w-full px-4 md:px-8">
+      <div className="align-center-row grid grid-cols-1 xl:grid-cols-2 gap-5 w-full px-4 md:px-8">
         <>
           {data?.allProductsFromStore?.length === 0 ? (
-            <div className="flex justify-center w-full">
+            <div className="flex w-full">
               <p className="font-semibold text-lg text-primary">
                 Esta tienda no tiene productos todavía.
               </p>

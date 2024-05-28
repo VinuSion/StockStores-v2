@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AuthLayout } from '@pages/layouts/AuthLayout';
-import { faqData } from '@utils/constants/faq/faqCardsData';
+import { faqData } from '@utils/constants/faqCardsData';
 
 const Faq: React.FC = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState<number | null>(null);

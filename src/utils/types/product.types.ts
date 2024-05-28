@@ -17,6 +17,12 @@ export type Product = {
   isFeatured: boolean
 }
 
+export type ProductCategory = {
+  id: string
+  title: string
+  value: string
+}
+
 export interface IProductProps {
   product: Product
 }

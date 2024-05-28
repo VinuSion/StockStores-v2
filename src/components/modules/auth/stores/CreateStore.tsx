@@ -46,7 +46,7 @@ const CreateStore: React.FC = () => {
               primera vez, te guiaremos paso a paso después de la creación.
             </DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleSubmit} className="mt-5 w-full">
+          <form onSubmit={handleSubmit} className="mt-3 w-full">
             <div className="grid w-full gap-1.5 mb-5">
               <Label htmlFor="storeName">Nombre</Label>
               <Input

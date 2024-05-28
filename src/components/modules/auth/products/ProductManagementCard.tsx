@@ -36,25 +36,31 @@ const ProductManagementCard: React.FC<IProductProps> = ({ product }) => {
           <p className="text-sm">{product?.productDescription}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Badge icon={<Shapes className="h-4 w-4 mr-1"/>}>{product?.productCategory}</Badge>
+          <Badge icon={<Shapes className="h-4 w-4 mr-1" />}>
+            {product?.productCategory}
+          </Badge>
           {product?.productBrand && (
             <Badge variant="outline">{product?.productBrand}</Badge>
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-3 mt-3 mb-3 w-full xl:mt-0 xl:w-1/3">
+      <div className="flex xl:flex-col gap-3 mt-3 mb-3 w-full xl:items-end xl:mt-0 xl:w-1/3">
         <Button
           variant="outline"
           size="icon"
           icon={<Pencil className="svg-size" />}
-          className="w-full"
-        />
+          className="w-full xl:max-w-10"
+        >
+          <span className="flex xl:hidden">Modificar</span>
+        </Button>
         <Button
           variant="destructive"
           size="icon"
           icon={<Trash2 className="svg-size" />}
-          className="w-full"
-        />
+          className="w-full xl:max-w-10"
+        >
+          <span className="flex xl:hidden">Eliminar</span>
+        </Button>
       </div>
     </div>
   )
