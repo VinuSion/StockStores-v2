@@ -25,8 +25,7 @@ import { useShoppingCartStore } from '@/store'
 
 const ProductDetailsPage: React.FC = () => {
   const { isLoading, isError, data, error } = useGetProduct()
-  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } =
-    useShoppingCartStore()
+  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } = useShoppingCartStore()
   const { toast } = useToast()
 
   const addProductToCartSafe = (product: Product) => {

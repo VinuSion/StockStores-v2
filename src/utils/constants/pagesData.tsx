@@ -1,6 +1,6 @@
 import { RouterType } from '@utils/types/router.types'
 
-import Home from '@pages/landing/Home'
+import Home from '@/pages/landing/Home'
 import Login from '@pages/landing/Login'
 import SignUp from '@pages/landing/SignUp'
 import ResetPassword from '@pages/landing/ResetPassword'
@@ -9,7 +9,9 @@ import Account from '@pages/auth/Account'
 import Stores from '@pages/auth/Stores'
 import Dashboard from '@pages/auth/Dashboard'
 import Orders from '@pages/auth/Orders'
+import Faq from '@pages/auth/faq/Faq'
 
+import FaqDetails from '@pages/auth/faq/FaqDetails'
 import StoreDetailsPage from '@pages/auth/stores/StoreDetailsPage'
 import StoreProducts from '@pages/auth/products/StoreProducts'
 import ProductDetailsPage from '@pages/auth/products/ProductDetailsPage'
@@ -59,6 +61,16 @@ const authPagesData: RouterType[] = [
     title: 'orders',
     path: '/orders',
     element: <Orders />,
+  },
+  {
+    title: 'faq',
+    path: '/faq',
+    element: <Faq />,
+  },
+  {
+    title: 'faq-details-page',
+    path: '/faq/:faqDetail',
+    element: <FaqDetails />,
   },
   {
     title: 'stores-details-page',
