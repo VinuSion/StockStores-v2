@@ -49,3 +49,11 @@ export const compareDates = (createdAt: string, updatedAt: string): string => {
     return `${formatDate(updatedAt)} (editado)`
   }
 }
+
+export const truncateString = (str: string | undefined, maxLength: number): string => {
+  if (!str) return ''
+  if (str.length > maxLength) {
+    return str.substring(0, maxLength) + '...'
+  }
+  return str
+}

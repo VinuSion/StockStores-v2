@@ -24,6 +24,7 @@ const useCreateStore = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<StoreFormData>({
     resolver: zodResolver(storeFormSchema),
   })
@@ -59,6 +60,7 @@ const useCreateStore = () => {
         title: '🎉 Tienda Creada Exitosamente',
         description: 'Tu nueva tienda ha sido creada con éxito. ¡Felicidades!',
       })
+      reset()
     },
     onError: (error) =>
       setCreateStoreError(error?.message || API_ERROR_DEFAULT_MESSAGE),

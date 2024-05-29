@@ -23,6 +23,7 @@ const useCreateProduct = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<ProductFormData>({
     resolver: zodResolver(productFormSchema),
   })
@@ -54,6 +55,7 @@ const useCreateProduct = () => {
         title: '🎉 Producto Creado Exitosamente',
         description: 'Acabas de crear un nuevo producto en tu tienda. ¡Felicidades!',
       })
+      reset()
     },
     onError: (error) =>
       setCreateProductError(error?.message || API_ERROR_DEFAULT_MESSAGE),
