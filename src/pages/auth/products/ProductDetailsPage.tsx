@@ -25,7 +25,8 @@ import { useShoppingCartStore } from '@/store'
 
 const ProductDetailsPage: React.FC = () => {
   const { isLoading, isError, data, error } = useGetProduct()
-  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } = useShoppingCartStore()
+  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } =
+    useShoppingCartStore()
   const { toast } = useToast()
 
   const addProductToCartSafe = (product: Product) => {
@@ -154,7 +155,7 @@ const ProductDetailsPage: React.FC = () => {
               <div className="flex justify-center w-full p-2 rounded-md bg-accent text-primary font-semibold select-none pointer-events-none">
                 Ya está en tu Carrito
               </div>
-            ) : (
+            ) : data?.product?.stockAmount! > 0 ? (
               <Button
                 className="w-full mb-3"
                 icon={<ShoppingCart className="svg-size" />}
@@ -162,6 +163,10 @@ const ProductDetailsPage: React.FC = () => {
               >
                 Agregar Al Carrito
               </Button>
+            ) : (
+              <div className="flex justify-center w-full p-2 rounded-md bg-accent text-destructive font-semibold select-none pointer-events-none">
+                Agotado por el momento
+              </div>
             )}
           </div>
         </div>

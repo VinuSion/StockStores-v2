@@ -16,7 +16,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   product,
   pathname = '/stores',
 }) => {
-  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } = useShoppingCartStore()
+  const { checkStoreId, addProduct, isProductInCart, isCartEmpty } =
+    useShoppingCartStore()
   const { toast } = useToast()
 
   const addProductToCartSafe = (product: Product) => {
@@ -38,10 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div className="flex flex-col justify-around gap-2 md:gap-3 p-3 border-2 rounded-md shadow-lg h-full">
       <img
         className="rounded-md object-cover aspect-video"
-        src={
-          product?.leadImageURL ||
-          FALLBACK_IMAGE
-        }
+        src={product?.leadImageURL || FALLBACK_IMAGE}
         alt={`${product?.productName} product photo`}
       />
       <div className="flex flex-wrap items-center gap-2 w-full">
@@ -62,14 +60,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       <div className="flex flex-col gap-3 mb-3">
         {isProductInCart(product._id) ? (
-          <div className="flex justify-center w-full p-2 rounded-md bg-accent text-primary font-semibold select-none pointer-events-none">Ya está en tu Carrito</div>
-        ) : (
+          <div className="flex justify-center w-full p-2 rounded-md bg-accent text-primary font-semibold select-none pointer-events-none">
+            Ya está en tu Carrito
+          </div>
+        ) : product?.stockAmount > 0 ? (
           <Button
             icon={<ShoppingCart className="svg-size" />}
             onClick={() => addProductToCartSafe(product)}
           >
             Agregar
           </Button>
+        ) : (
+          <div className="flex justify-center w-full p-2 rounded-md bg-accent text-destructive font-semibold select-none pointer-events-none">
+            Agotado
+          </div>
         )}
         <Link to={`${pathname}/${product?.productSlug}`}>
           <Button

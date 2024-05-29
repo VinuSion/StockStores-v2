@@ -1,7 +1,8 @@
-import { Pencil, Trash2, Layers, Shapes } from 'lucide-react'
+import { Layers, Shapes } from 'lucide-react'
 
 import { Badge } from '@ui/badge'
-import { Button } from '@forms/button'
+import { UpdateProduct } from '@modules/auth/products/UpdateProduct'
+import { DeleteProduct } from '@modules/auth/products/DeleteProduct'
 
 import { IProductProps } from '@utils/types/product.types'
 import { formatPrice } from '@utils/numberMethods'
@@ -45,22 +46,8 @@ const ProductManagementCard: React.FC<IProductProps> = ({ product }) => {
         </div>
       </div>
       <div className="flex xl:flex-col gap-3 mt-3 mb-3 w-full xl:items-end xl:mt-0 xl:w-1/3">
-        <Button
-          variant="outline"
-          size="icon"
-          icon={<Pencil className="svg-size" />}
-          className="w-full xl:max-w-10"
-        >
-          <span className="flex xl:hidden">Modificar</span>
-        </Button>
-        <Button
-          variant="destructive"
-          size="icon"
-          icon={<Trash2 className="svg-size" />}
-          className="w-full xl:max-w-10"
-        >
-          <span className="flex xl:hidden">Eliminar</span>
-        </Button>
+        <UpdateProduct product={product} />
+        <DeleteProduct product={product} />
       </div>
     </div>
   )

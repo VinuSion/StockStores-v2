@@ -40,7 +40,7 @@ export const productFormSchema = z.object({
     }),
   stockAmount: z
     .number()
-    .min(1, { message: 'Stock mínimo es 1' })
+    .min(0, { message: 'Stock mínimo es 0' })
     .max(1000, { message: 'Stock máximo es 1000' }),
   isFeatured: z.boolean(),
 });

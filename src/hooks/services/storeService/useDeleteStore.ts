@@ -25,7 +25,7 @@ const useDeleteStore = (store: Store) => {
       navigate("/dashboard")
       toast({
         title: '😔 Tienda Eliminada',
-        description: 'La tienda y todos sus productos han sido eliminados permanentemente.',
+        description: 'La tienda y todos sus productos han sido eliminados exitosamente.',
       })
     },
     onError: (error) =>

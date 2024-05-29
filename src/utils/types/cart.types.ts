@@ -5,6 +5,10 @@ export type CartItem = {
   product: Product
 }
 
+export type ICartItem = {
+  cartItem: CartItem
+}
+
 export interface ShoppingCartState {
   cart: CartItem[]
   checkStoreId: (product: Product) => boolean
