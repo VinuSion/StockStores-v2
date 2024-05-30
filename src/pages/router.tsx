@@ -2,6 +2,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import { RouterType } from '@utils/types/router.types'
 import { authPagesData, landingPagesData } from '@utils/constants/pagesData'
 import NotFound from '@pages/NotFound'
+
 import { useUserStore } from '@/store'
 
 const Router = () => {

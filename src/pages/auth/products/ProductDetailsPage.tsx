@@ -21,6 +21,7 @@ import { FALLBACK_IMAGE } from '@utils/constants/errorMessages'
 
 import { useToast } from '@hooks/useToast'
 import { useGetProduct } from '@services/productService/useGetProduct'
+
 import { useShoppingCartStore } from '@/store'
 
 const ProductDetailsPage: React.FC = () => {

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
-import { useThemeStore } from '@/store'
 import { ThemeProviderProps } from '@utils/types/theme.types'
+
+import { useThemeStore } from '@/store'
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const { theme } = useThemeStore()

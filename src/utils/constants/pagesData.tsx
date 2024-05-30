@@ -17,6 +17,7 @@ import StoreProducts from '@pages/auth/products/StoreProducts'
 import ProductDetailsPage from '@pages/auth/products/ProductDetailsPage'
 import ManageStore from '@pages/auth/stores/ManageStore'
 import ManageStoreProducts from '@pages/auth/products/ManageStoreProducts'
+import MakeOrder from '@pages/auth/orders/MakeOrder'
 
 const landingPagesData: RouterType[] = [
   {
@@ -96,6 +97,11 @@ const authPagesData: RouterType[] = [
     title: 'manage-store-products-page',
     path: '/manage/:storeSlug/products',
     element: <ManageStoreProducts />,
+  },
+  {
+    title: 'make-order',
+    path: '/orders/new',
+    element: <MakeOrder />,
   },
 ]
 

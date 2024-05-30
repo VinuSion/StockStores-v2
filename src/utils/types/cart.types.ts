@@ -5,7 +5,7 @@ export type CartItem = {
   product: Product
 }
 
-export type ICartItem = {
+export type ICartItemProps = {
   cartItem: CartItem
 }
 

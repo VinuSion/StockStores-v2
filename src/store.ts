@@ -3,6 +3,7 @@ import { devtools, persist } from 'zustand/middleware'
 import { UserStore, User } from '@utils/types/user.types'
 import { Theme, ThemeProviderState } from '@utils/types/theme.types'
 import { ShoppingCartState } from '@utils/types/cart.types'
+import { ShippingAddressState, ShippingAddress } from '@utils/types/shipping.types'
 import { Product } from '@utils/types/product.types'
 
 export const useUserStore = create<UserStore>()(
@@ -121,6 +122,34 @@ export const useShoppingCartStore = create<ShoppingCartState>()(
       }),
       {
         name: 'shopping-cart',
+      }
+    )
+  )
+)
+
+export const useShippingAddressStore = create<ShippingAddressState>()(
+  devtools(
+    persist(
+      (set, get) => ({
+        shippingAddresses: [],
+        addAllAddresses: (addresses: ShippingAddress[]) =>
+          set({ shippingAddresses: addresses }),
+        addOneShippingAddress: (address: ShippingAddress) =>
+          set((state) => ({
+            shippingAddresses: [...state.shippingAddresses, address],
+          })),
+        removeOneShippingAddress: (addressId: string) =>
+          set((state) => ({
+            shippingAddresses: state.shippingAddresses.filter(
+              (address) => address.userId !== addressId
+            ),
+          })),
+        clearShippingAddresses: () =>
+          set({ shippingAddresses: [] }),
+        isShippingSet: () => get().shippingAddresses.length > 0,
+      }),
+      {
+        name: 'shipping-address',
       }
     )
   )

@@ -21,7 +21,7 @@ import {
 import { Ping } from '@ui/ping'
 import { Button } from '@forms/button'
 
-import { ICartItem } from '@utils/types/cart.types'
+import { ICartItemProps } from '@utils/types/cart.types'
 import { formatPrice } from '@utils/numberMethods'
 import { truncateString } from '@/utils/stringMethods'
 import { FALLBACK_IMAGE } from '@utils/constants/errorMessages'
@@ -96,13 +96,16 @@ const CartButton: React.FC = () => {
                 Vacear Carrito
               </Button>
             </div>
-            <Button
-              type="button"
-              icon={<CreditCard className="svg-size" />}
-              className="w-full sm:w-fit"
-            >
-              Proceder al Pago
-            </Button>
+            <Link to="/orders/new" className="w-full sm:w-fit">
+              <Button
+                type="button"
+                icon={<CreditCard className="svg-size" />}
+                className="w-full sm:w-fit"
+                onClick={() => setCartDialogOpen(false)}
+              >
+                Proceder al Pago
+              </Button>
+            </Link>
           </div>
         )}
       </DialogContent>
@@ -110,7 +113,7 @@ const CartButton: React.FC = () => {
   )
 }
 
-const CartItemCard: React.FC<ICartItem> = ({ cartItem }) => {
+const CartItemCard: React.FC<ICartItemProps> = ({ cartItem }) => {
   const { incrementQuantity, decrementQuantity, removeProduct } =
     useShoppingCartStore()
 
