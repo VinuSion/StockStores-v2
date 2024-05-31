@@ -12,6 +12,7 @@ import { Badge } from '@ui/badge'
 import { Separator } from '@ui/separator'
 import { OrderItemCard } from '@modules/auth/orders/OrderItemCard'
 import { ShippingAddressForm } from '@modules/auth/shipping/ShippingAddressForm'
+import { SubmitOrderForm } from '@modules/auth/orders/SubmitOrderForm'
 import { formatPhoneNumber } from '@utils/stringMethods'
 import { formatPrice } from '@utils/numberMethods'
 
@@ -22,8 +23,7 @@ import { useShippingAddressStore } from '@/store'
 
 const DescribeOrder: React.FC = () => {
   const { isLoading, isError, data, error } = useStoreFromOrder()
-  const { orderItems, itemsPrice, shippingPrice, totalPrice } =
-    useOrderDetails()
+  const { orderItems, itemsPrice, shippingPrice, totalPrice } = useOrderDetails()
   const { shippingAddresses, isShippingSet } = useShippingAddressStore()
 
   if (isLoading) {
@@ -99,7 +99,9 @@ const DescribeOrder: React.FC = () => {
               </div>
             )}
           </div>
-          <Separator className="my-3" />
+          <div className="px-1 sm:px-6">
+            <Separator className="my-3" />
+          </div>
           {isShippingSet() && (
             <div className="flex flex-col gap-2 px-1 sm:px-6">
               <div className="flex justify-between">
@@ -125,11 +127,11 @@ const DescribeOrder: React.FC = () => {
                 <span className="text-xl font-bold">PRECIO TOTAL:</span>
                 <p className="text-xl font-bold">
                   ${formatPrice(totalPrice || 0)}
-                  <span className="font-normal text-sm mx-1">
-                    COP
-                  </span>
+                  <span className="font-normal text-sm mx-1">COP</span>
                 </p>
               </div>
+              <Separator className="my-3" />
+              <SubmitOrderForm store={data!} />
             </div>
           )}
         </div>
