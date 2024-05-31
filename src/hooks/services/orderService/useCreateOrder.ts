@@ -8,11 +8,18 @@ import { useToast } from '@hooks/useToast'
 import { request } from '@utils/RequestGenerator'
 import { ORDERS_ENDPOINT, Order } from '@utils/types/order.types'
 import { API_ERROR_DEFAULT_MESSAGE } from '@utils/constants/errorMessages'
-import { paymentFormSchema, PaymentFormData } from '@utils/zod-schemas/payment-schema'
+import {
+  paymentFormSchema,
+  PaymentFormData,
+} from '@utils/zod-schemas/payment-schema'
 import { Store } from '@utils/types/store.types'
 
 import { useOrderDetails } from '@services/orderService/useOrderDetails'
-import { useUserStore, useShippingAddressStore } from '@/store'
+import {
+  useUserStore,
+  useShippingAddressStore,
+  useShoppingCartStore,
+} from '@/store'
 
 const useCreateOrder = (store: Store) => {
   const [createOrderError, setCreateOrderError] = useState<string | null>(null)
@@ -20,9 +27,11 @@ const useCreateOrder = (store: Store) => {
   const queryClient = useQueryClient()
   const { toast } = useToast()
 
-  const { orderItems, itemsPrice, shippingPrice, totalPrice } = useOrderDetails()
+  const { orderItems, itemsPrice, shippingPrice, totalPrice } =
+    useOrderDetails()
   const { userData } = useUserStore()
   const { shippingAddresses } = useShippingAddressStore()
+  const { clearCart } = useShoppingCartStore()
 
   const {
     control,
@@ -62,7 +71,8 @@ const useCreateOrder = (store: Store) => {
       queryClient.invalidateQueries({
         queryKey: [`orders-from-user-${userData?._id}`],
       })
-      navigate("/orders")
+      clearCart()
+      navigate('/orders')
       toast({
         title: '📦 ¡Pedido Creado Exitosamente!',
         description: `Has creado un nuevo pedido en "${store?.storeName}". Notificaremos al vendedor de tu solicitud. ¡Gracias por tu compra!`,

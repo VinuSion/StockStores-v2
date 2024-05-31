@@ -39,7 +39,7 @@ const SubmitOrderForm: React.FC<IStoreProps> = ({ store }) => {
                   <SelectGroup>
                     <SelectItem value="Nequi">Nequi</SelectItem>
                     <SelectItem value="Bancolombia">Bancolombia</SelectItem>
-                    <SelectItem value="Efectivo">Nequi</SelectItem>
+                    <SelectItem value="Efectivo">Efectivo</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
