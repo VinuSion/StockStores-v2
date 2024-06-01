@@ -3,7 +3,10 @@ import { devtools, persist } from 'zustand/middleware'
 import { UserStore, User } from '@utils/types/user.types'
 import { Theme, ThemeProviderState } from '@utils/types/theme.types'
 import { ShoppingCartState } from '@utils/types/cart.types'
-import { ShippingAddressState, ShippingAddress } from '@utils/types/shipping.types'
+import {
+  ShippingAddressState,
+  ShippingAddress,
+} from '@utils/types/shipping.types'
 import { Product } from '@utils/types/product.types'
 
 export const useUserStore = create<UserStore>()(
@@ -13,7 +16,9 @@ export const useUserStore = create<UserStore>()(
         userData: null,
         setUserData: (user: User) => {
           set((state) => ({ ...state, userData: user }))
-          useThemeStore.getState().setTheme(user?.settings?.colorTheme || "system")
+          useThemeStore
+            .getState()
+            .setTheme(user?.settings?.colorTheme || 'system')
         },
         updateUserData: (userUpdates: Partial<User>) => {
           set((state) => ({
@@ -22,7 +27,7 @@ export const useUserStore = create<UserStore>()(
         },
         removeUserData: () => {
           set({ userData: null })
-          useThemeStore.getState().setTheme("system")
+          useThemeStore.getState().setTheme('system')
         },
       }),
       {
@@ -67,7 +72,9 @@ export const useShoppingCartStore = create<ShoppingCartState>()(
         cart: [],
         checkStoreId: (product: Product) => {
           const state = get()
-          return state.cart.every(item => item.product.storeId === product.storeId)
+          return state.cart.every(
+            (item) => item.product.storeId === product.storeId
+          )
         },
         addProduct: (product: Product) => {
           set((state) => {
@@ -144,8 +151,7 @@ export const useShippingAddressStore = create<ShippingAddressState>()(
               (address) => address.userId !== addressId
             ),
           })),
-        clearShippingAddresses: () =>
-          set({ shippingAddresses: [] }),
+        clearShippingAddresses: () => set({ shippingAddresses: [] }),
         isShippingSet: () => get().shippingAddresses.length > 0,
       }),
       {

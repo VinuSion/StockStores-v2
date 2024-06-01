@@ -19,7 +19,15 @@ import { Label } from '@forms/label'
 import { useCreateStore } from '@services/storeService/useCreateStore'
 
 const CreateStore: React.FC = () => {
-  const { register, handleSubmit, setFormOpen, formOpen, errors, isPending, createStoreError } = useCreateStore()
+  const {
+    register,
+    handleSubmit,
+    setFormOpen,
+    formOpen,
+    errors,
+    isPending,
+    createStoreError,
+  } = useCreateStore()
 
   return (
     <div className="my-5 flex flex-col gap-5 w-full px-4 md:px-8">

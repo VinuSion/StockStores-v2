@@ -32,7 +32,12 @@ const NavBar: React.FC = () => {
                     : 'active:bg-accent active:text-primary md:hover:bg-accent md:hover:text-primary'
                 }`}
               >
-                <menuItem.icon fill={isActive(menuItem.to) ? "#17ab75" : "none"} className={`svg-size ${isActive(menuItem.to) && "text-background"}`} />
+                <menuItem.icon
+                  fill={isActive(menuItem.to) ? '#17ab75' : 'none'}
+                  className={`svg-size ${
+                    isActive(menuItem.to) && 'text-background'
+                  }`}
+                />
                 <span
                   className={`text-xs md:text-base ${
                     isActive(menuItem.to) && 'font-bold'
@@ -49,7 +54,10 @@ const NavBar: React.FC = () => {
                 to="/account"
                 className="w-full flex flex-col items-center gap-2 p-2 rounded-md transition-all ease-in-out delay-50 md:flex-row bg-primary/20 text-primary active:bg-accent md:hover:bg-accent"
               >
-                <UserRound className="svg-size text-background" fill="#17ab75" />
+                <UserRound
+                  className="svg-size text-background"
+                  fill="#17ab75"
+                />
                 <span className="text-xs md:text-base font-bold">
                   Mi Cuenta
                 </span>

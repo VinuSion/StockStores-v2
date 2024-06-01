@@ -7,10 +7,7 @@ import { useToast } from '@hooks/useToast'
 import { request } from '@utils/RequestGenerator'
 import { STORES_ENDPOINT, Store } from '@utils/types/store.types'
 import { API_ERROR_DEFAULT_MESSAGE } from '@utils/constants/errorMessages'
-import {
-  storeFormSchema,
-  StoreFormData,
-} from '@utils/zod-schemas/store-schema'
+import { storeFormSchema, StoreFormData } from '@utils/zod-schemas/store-schema'
 
 const useUpdateStore = (store: Store) => {
   const [updateStoreError, setUpdateStoreError] = useState<string | null>(null)
@@ -63,9 +60,7 @@ const useUpdateStore = (store: Store) => {
       setUpdateStoreError(error?.message || API_ERROR_DEFAULT_MESSAGE),
   })
 
-  const onSubmit: SubmitHandler<StoreFormData> = (
-    data: StoreFormData
-  ) => {
+  const onSubmit: SubmitHandler<StoreFormData> = (data: StoreFormData) => {
     setUpdateStoreError(null)
     mutate(data)
   }

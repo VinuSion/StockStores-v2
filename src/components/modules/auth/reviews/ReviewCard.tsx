@@ -24,12 +24,16 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
           </p>
         </div>
         <div className="flex ml-2">
-          <span className="text-sm text-muted-foreground">{compareDates(review?.createdAt, review?.updatedAt)}</span>
+          <span className="text-sm text-muted-foreground">
+            {compareDates(review?.createdAt, review?.updatedAt)}
+          </span>
         </div>
       </div>
       <div className="flex flex-row items-center gap-2 w-full my-2">
         <Rating averageRating={review?.rating || 0} />
-        <span className="text-sm text-primary font-semibold">{review?.rating}/5 estrellas</span>
+        <span className="text-sm text-primary font-semibold">
+          {review?.rating}/5 estrellas
+        </span>
       </div>
       {review?.comment && (
         <div className="w-full text-wrap my-2">

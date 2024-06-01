@@ -14,7 +14,7 @@ import { useUserStore } from '@/store'
 const useCreateStore = () => {
   const [formOpen, setFormOpen] = useState<boolean>(false)
   const [createStoreError, setCreateStoreError] = useState<string | null>(null)
-  
+
   const queryClient = useQueryClient()
   const { toast } = useToast()
 

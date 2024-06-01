@@ -36,7 +36,8 @@ const useLogin = () => {
       setUserData(userData)
       userData?.isSeller ? navigate('/dashboard') : navigate('/stores')
     },
-    onError: (error) => setLoginError(error?.message || API_ERROR_DEFAULT_MESSAGE)
+    onError: (error) =>
+      setLoginError(error?.message || API_ERROR_DEFAULT_MESSAGE),
   })
 
   const onSubmit: SubmitHandler<LoginFormData> = (data: LoginFormData) => {

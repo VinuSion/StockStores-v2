@@ -3,12 +3,14 @@ export const normalizeName = (name: string) => {
   const filteredNameParts = nameParts.filter((part) => part.trim() !== '')
 
   const formattedNameParts = filteredNameParts.map((part) =>
-    part.toLowerCase() === 'la' ? part : part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+    part.toLowerCase() === 'la'
+      ? part
+      : part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
   )
 
   const normalizedName = formattedNameParts.join(' ')
   return normalizedName
-};
+}
 
 export const formatPhoneNumber = (phoneNumber: string): string => {
   if (phoneNumber.length !== 10) {
@@ -25,7 +27,20 @@ export const formatPhoneNumber = (phoneNumber: string): string => {
 export const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
 
-  const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+  const monthNames = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ]
   const day = date.getUTCDate()
   const month = monthNames[date.getUTCMonth()]
   const year = date.getUTCFullYear()
@@ -50,7 +65,10 @@ export const compareDates = (createdAt: string, updatedAt: string): string => {
   }
 }
 
-export const truncateString = (str: string | undefined, maxLength: number): string => {
+export const truncateString = (
+  str: string | undefined,
+  maxLength: number
+): string => {
   if (!str) return ''
   if (str.length > maxLength) {
     return str.substring(0, maxLength) + '...'

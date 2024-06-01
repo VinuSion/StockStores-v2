@@ -3,5 +3,5 @@ export const formatTime = (time: number) => {
 }
 
 export const formatPrice = (value: number): string => {
-  return value.toLocaleString('es-CO');
+  return value.toLocaleString('es-CO')
 }

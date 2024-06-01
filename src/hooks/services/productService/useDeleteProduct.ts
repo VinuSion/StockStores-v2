@@ -31,12 +31,12 @@ const useDeleteProduct = (product: Product) => {
       toast({
         title: `❌ Error al Eliminar "${product?.productName}"`,
         description: `Error: ${error?.message || API_ERROR_DEFAULT_MESSAGE}`,
-      })
+      }),
   })
 
   return {
     deleteProduct,
-    isPending
+    isPending,
   }
 }
 

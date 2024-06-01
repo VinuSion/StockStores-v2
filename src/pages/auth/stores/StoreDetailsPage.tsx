@@ -34,7 +34,12 @@ const StoreDetailsPage: React.FC = () => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <Link to="/stores" className="transition-colors hover:text-foreground">Tiendas</Link>
+              <Link
+                to="/stores"
+                className="transition-colors hover:text-foreground"
+              >
+                Tiendas
+              </Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -44,7 +49,9 @@ const StoreDetailsPage: React.FC = () => {
         </Breadcrumb>
         <div className="flex items-center py-5">
           <Store className="h-6 w-6 mr-2" />
-          <h1 className="text-2xl md:text-3xl font-extrabold">{data?.storeName}</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold">
+            {data?.storeName}
+          </h1>
         </div>
         <img
           className="rounded-md object-cover aspect-video outline outline-primary outline-offset-4 shadow-lg"
@@ -74,7 +81,9 @@ const StoreDetailsPage: React.FC = () => {
         <Separator className="my-5" />
         <div className="flex items-center">
           <Contact className="h-6 w-6 mr-2" />
-          <h2 className="text-2xl md:text-3xl font-extrabold">Info. de Contacto</h2>
+          <h2 className="text-2xl md:text-3xl font-extrabold">
+            Info. de Contacto
+          </h2>
         </div>
         <div className="flex flex-col md:items-center md:flex-row gap-2 w-full">
           <span className="text-lg font-semibold">Direccion:</span>

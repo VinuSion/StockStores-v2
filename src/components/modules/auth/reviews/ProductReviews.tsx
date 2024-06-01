@@ -18,15 +18,14 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ productId }) => {
       {data && data.length > 0 ? (
         <div className="my-3 grid grid-cols-1 gap-6 xl:grid-cols-2">
           {data?.map((review, index) => (
-            <ReviewCard
-              key={index}
-              review={review}
-            />
+            <ReviewCard key={index} review={review} />
           ))}
         </div>
       ) : (
         <div className="my-3 flex justify-center w-full">
-          <p className="font-semibold text-lg text-primary">No hay reseñas para este producto todavia.</p>
+          <p className="font-semibold text-lg text-primary">
+            No hay reseñas para este producto todavia.
+          </p>
         </div>
       )}
     </>

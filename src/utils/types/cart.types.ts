@@ -1,4 +1,4 @@
-import { Product } from "@utils/types/product.types"
+import { Product } from '@utils/types/product.types'
 
 export type CartItem = {
   quantity: number

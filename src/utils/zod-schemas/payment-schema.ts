@@ -6,12 +6,14 @@ export const paymentFormSchema = z.object({
     .string({
       required_error: 'Elije un metodo de Pago',
     })
-    .refine((value) => {
-      return value && value !== 'Seleccione un Metodo de Pago';
-    }, {
-      message: 'Elije un metodo de Pago',
-    }),
-
+    .refine(
+      (value) => {
+        return value && value !== 'Seleccione un Metodo de Pago'
+      },
+      {
+        message: 'Elije un metodo de Pago',
+      }
+    ),
 })
 
 export type PaymentFormData = z.infer<typeof paymentFormSchema>

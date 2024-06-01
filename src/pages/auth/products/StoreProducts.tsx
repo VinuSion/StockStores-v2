@@ -53,7 +53,10 @@ const StoreProducts: React.FC = () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <h1 className="flex gap-2 items-center text-2xl md:text-3xl font-extrabold"><ShoppingBasket />Productos - {data?.storeName}</h1>
+        <h1 className="flex gap-2 items-center text-2xl md:text-3xl font-extrabold">
+          <ShoppingBasket />
+          Productos - {data?.storeName}
+        </h1>
       </div>
       <div className="align-center-row grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8 md:gap-10 w-full px-4 md:px-8">
         <ListAllStoreProducts />

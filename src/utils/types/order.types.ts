@@ -1,6 +1,12 @@
 export const ORDERS_ENDPOINT: string = '/orders'
 
-export type OrderStatus = 'Awaiting Seller Approval' | 'Waiting for Payment' | 'Waiting for Delivery' | 'Delivered' | 'Cancelled' | 'Rejected by Seller'
+export type OrderStatus =
+  | 'Awaiting Seller Approval'
+  | 'Waiting for Payment'
+  | 'Waiting for Delivery'
+  | 'Delivered'
+  | 'Cancelled'
+  | 'Rejected by Seller'
 
 export type OrderItem = {
   productId: string
@@ -23,19 +29,19 @@ type OrderShippingAddress = {
 export type Order = {
   _id: string
   userId: string
-  storeId: string,
-  storeSlug: string,
-  storeName: string,
-  storeImageURL: string,
-  orderStatus: OrderStatus,
-  orderItems: OrderItem[],
-  shippingAddress: OrderShippingAddress,
-  itemsPrice: number,
-  shippingPrice: number,
-  totalPrice: number,
-  paymentMethod: string,
-  paidAt?: Date,
-  deliveredAt?: Date,
+  storeId: string
+  storeSlug: string
+  storeName: string
+  storeImageURL: string
+  orderStatus: OrderStatus
+  orderItems: OrderItem[]
+  shippingAddress: OrderShippingAddress
+  itemsPrice: number
+  shippingPrice: number
+  totalPrice: number
+  paymentMethod: string
+  paidAt?: Date
+  deliveredAt?: Date
 }
 
 export interface IOrderItemProps {

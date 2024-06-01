@@ -33,9 +33,9 @@ export type StoreProducts = {
 }
 
 export type ProductResponse = {
-  storeSlug: string,
-  storeName: string,
-  product: Product,
+  storeSlug: string
+  storeName: string
+  product: Product
 }
 
 export interface ProductCardProps {

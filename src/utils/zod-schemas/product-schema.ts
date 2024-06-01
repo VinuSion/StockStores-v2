@@ -6,12 +6,9 @@ export const productFormSchema = z.object({
     .string()
     .min(3, { message: 'Mínimo 3 caracteres' })
     .max(25, { message: 'Máximo 25 caracteres' })
-    .refine(
-      (value) => /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s]*$/.test(value),
-      {
-        message: 'Solo letras o números en el Nombre',
-      }
-    ),
+    .refine((value) => /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s]*$/.test(value), {
+      message: 'Solo letras o números en el Nombre',
+    }),
   productDescription: z
     .string()
     .min(3, { message: 'Mínimo 3 caracteres' })
@@ -24,25 +21,29 @@ export const productFormSchema = z.object({
     .string()
     .optional()
     .refine(
-      (value) => value === undefined || /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s]*$/.test(value),
+      (value) =>
+        value === undefined || /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s]*$/.test(value),
       {
         message: 'Solo letras o números',
       }
     ),
   productCategory: z
     .string({
-      required_error: "Elije una categoría válida",
+      required_error: 'Elije una categoría válida',
     })
-    .refine((value) => {
-      return value && value !== 'Seleccione una Categoria';
-    }, {
-      message: 'Elije una categoría válida',
-    }),
+    .refine(
+      (value) => {
+        return value && value !== 'Seleccione una Categoria'
+      },
+      {
+        message: 'Elije una categoría válida',
+      }
+    ),
   stockAmount: z
     .number()
     .min(0, { message: 'Stock mínimo es 0' })
     .max(1000, { message: 'Stock máximo es 1000' }),
   isFeatured: z.boolean(),
-});
+})
 
 export type ProductFormData = z.infer<typeof productFormSchema>

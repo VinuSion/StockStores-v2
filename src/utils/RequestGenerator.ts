@@ -30,6 +30,6 @@ export const request = async <T>(options: TRequestOptions): Promise<T> => {
   }
 
   // Handle successful response
-  const responseData: T = await response.json();
-  return responseData;
+  const responseData: T = await response.json()
+  return responseData
 }

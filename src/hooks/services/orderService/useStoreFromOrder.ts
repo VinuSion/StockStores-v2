@@ -18,7 +18,6 @@ const useStoreFromOrder = () => {
   })
 
   return { isLoading, isError, data, error }
-
 }
 
 export { useStoreFromOrder }

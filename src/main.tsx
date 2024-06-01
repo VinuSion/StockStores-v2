@@ -12,12 +12,10 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
       <React.StrictMode>
         <App />
-
         <Toaster />
         {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </React.StrictMode>

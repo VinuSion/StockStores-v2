@@ -4,7 +4,7 @@ import { useShoppingCartStore } from '@/store'
 const useTransformCartItems = () => {
   const { cart } = useShoppingCartStore()
 
-  const transformedCartItems: OrderItem[] = cart.map(cartItem => ({
+  const transformedCartItems: OrderItem[] = cart.map((cartItem) => ({
     productId: cartItem.product._id,
     productSlug: cartItem.product.productSlug,
     productName: cartItem.product.productName,

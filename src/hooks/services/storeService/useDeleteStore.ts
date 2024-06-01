@@ -22,22 +22,23 @@ const useDeleteStore = (store: Store) => {
       queryClient.invalidateQueries({
         queryKey: [`seller-stores-${store?.sellerId}`],
       })
-      navigate("/dashboard")
+      navigate('/dashboard')
       toast({
         title: '😔 Tienda Eliminada',
-        description: 'La tienda y todos sus productos han sido eliminados exitosamente.',
+        description:
+          'La tienda y todos sus productos han sido eliminados exitosamente.',
       })
     },
     onError: (error) =>
       toast({
         title: `❌ Error al Eliminar "${store?.storeName}"`,
         description: `Error: ${error?.message || API_ERROR_DEFAULT_MESSAGE}`,
-      })
+      }),
   })
 
   return {
     deleteStore,
-    isPending
+    isPending,
   }
 }
 

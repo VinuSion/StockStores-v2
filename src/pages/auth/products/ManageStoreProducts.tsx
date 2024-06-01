@@ -15,8 +15,7 @@ import {
 import { useGetAllStoreProducts } from '@services/productService/useGetAllStoreProducts'
 
 const ManageStoreProducts: React.FC = () => {
-  const { storeSlug, isLoading, isError, data, error } =
-    useGetAllStoreProducts()
+  const { storeSlug, isLoading, isError, data, error } = useGetAllStoreProducts()
 
   if (isLoading) {
     return <h1>Loading...</h1>
