@@ -1,8 +1,9 @@
-import FaqCard from '@modules/auth/faq/FaqCard'
-import { cardsData } from '@utils/constants/faqCardsData'
 import { Link } from 'react-router-dom'
 
-const ListAllCards: React.FC = () => {
+import { FaqCard } from '@modules/auth/faq/FaqCard'
+import { cardsData } from '@utils/constants/faqCardsData'
+
+const ListFaqCards: React.FC = () => {
   return (
     <>
       {cardsData.map((card, index) => (
@@ -18,4 +19,4 @@ const ListAllCards: React.FC = () => {
   )
 }
 
-export { ListAllCards }
+export { ListFaqCards }

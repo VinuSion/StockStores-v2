@@ -11,7 +11,7 @@ const OrderItemCard: React.FC<IOrderItemProps> = ({
 }) => {
   return (
     <div className="flex justify-between p-2 gap-3 rounded-md border-2 border-accent shadow-lg">
-      <div className="flex gap-3">
+      <div className="hidden sm:flex">
         <img
           className="flex aspect-square object-cover h-fit max-h-20 rounded-md p-1 border-2 border-primary"
           src={`${orderItem?.productLeadImage || FALLBACK_IMAGE}`}
@@ -28,12 +28,12 @@ const OrderItemCard: React.FC<IOrderItemProps> = ({
               {orderItem?.productName}
             </span>
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <p>
               ${formatPrice(orderItem?.productPrice || 0)}
               <span className="text-primary font-normal text-xs mx-1">COP</span>
             </p>
-            <div className="flex items-center gap-3 text-primary">
+            <div className="flex items-center gap-1 sm:gap-3 text-primary">
               <X className="h-4 w-4" />
               <p className="flex justify-center items-center font-bold bg-accent rounded-sm p-1 text-md h-5 w-8">
                 {orderItem?.quantity}

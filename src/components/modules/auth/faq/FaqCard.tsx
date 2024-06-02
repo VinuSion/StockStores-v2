@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-interface CardProps {
+interface FaqCardProps {
   image: JSX.Element
   title: string
   description: string
 }
 
-function FaqCard({ image, title, description }: CardProps) {
-  const [hoveredMain, isHoverOn] = useState(false)
+const FaqCard: React.FC<FaqCardProps> = ({ image, title, description }) => {
+  const [hoveredMain, isHoverOn] = useState<boolean>(false)
 
   return (
     <div
@@ -40,4 +40,4 @@ function FaqCard({ image, title, description }: CardProps) {
   )
 }
 
-export default FaqCard
+export { FaqCard }

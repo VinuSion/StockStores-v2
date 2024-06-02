@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
 import { AuthLayout } from '@pages/layouts/AuthLayout'
 import { faqData } from '@utils/constants/faqCardsData'
 

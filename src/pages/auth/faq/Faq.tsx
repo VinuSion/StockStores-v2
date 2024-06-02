@@ -1,6 +1,6 @@
 import React from 'react'
 import { AuthLayout } from '@pages/layouts/AuthLayout'
-import { ListAllCards } from '@components/modules/auth/faq/ListAllFaqCards'
+import { ListFaqCards } from '@modules/auth/faq/ListFaqCards'
 
 const Faq: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const Faq: React.FC = () => {
         </h1>
       </div>
       <div className="align-center-row grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-3 gap-8 md:gap-12 w-full px-8 md:px-8">
-        <ListAllCards />
+        <ListFaqCards />
       </div>
     </section>
   )
