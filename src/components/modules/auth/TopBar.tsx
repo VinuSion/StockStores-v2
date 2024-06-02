@@ -12,10 +12,11 @@ import {
   DropdownMenuTrigger,
 } from '@ui/dropdown-menu'
 
-import { useUserStore } from '@/store'
+import { useUserStore, useShippingAddressStore } from '@/store'
 
 const TopBar: React.FC = () => {
   const navigate = useNavigate()
+  const { clearShippingAddresses } = useShippingAddressStore()
   const { userData, removeUserData } = useUserStore()
 
   return (
@@ -49,6 +50,7 @@ const TopBar: React.FC = () => {
               <DropdownMenuItem
                 onClick={() => {
                   removeUserData()
+                  clearShippingAddresses()
                   navigate('/')
                 }}
                 className="w-full cursor-pointer focus:bg-destructive focus:text-white"

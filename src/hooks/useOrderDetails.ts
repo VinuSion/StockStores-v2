@@ -1,4 +1,4 @@
-import { useTransformCartItems } from '@services/cartService/useTransformCartItems'
+import { useTransformCartItems } from '@hooks/useTransformCartItems'
 
 const useOrderDetails = () => {
   const orderItems = useTransformCartItems()

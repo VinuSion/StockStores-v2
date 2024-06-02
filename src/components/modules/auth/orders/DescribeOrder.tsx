@@ -17,7 +17,7 @@ import { formatPhoneNumber } from '@utils/stringMethods'
 import { formatPrice } from '@utils/numberMethods'
 
 import { useStoreFromOrder } from '@services/orderService/useStoreFromOrder'
-import { useOrderDetails } from '@services/orderService/useOrderDetails'
+import { useOrderDetails } from '@hooks/useOrderDetails'
 
 import { useShippingAddressStore } from '@/store'
 
@@ -45,19 +45,19 @@ const DescribeOrder: React.FC = () => {
           <Separator />
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-5 h-full xl:gap-8 xl:grid-cols-2">
-        <div className="flex flex-col gap-2">
+      <div className="grid grid-cols-1 gap-5 h-full xl:gap-6 xl:grid-cols-5">
+        <div className="flex flex-col gap-2 xl:col-span-3">
           <div className="flex gap-2 items-center">
             <ShoppingBag className="svg-size" />
             <h4 className="text-lg font-bold w-max">Items del Pedido</h4>
           </div>
           <div className="flex flex-col gap-2 mt-3 border-2 border-accent rounded-md p-1 max-h-full xl:overflow-y-scroll xl:max-h-[600px]">
             {orderItems.map((orderItem, index) => (
-              <OrderItemCard key={index} orderItem={orderItem} />
+              <OrderItemCard key={index} orderItem={orderItem} storeSlug={data?.storeSlug} />
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 xl:col-span-2">
           <div className="flex gap-2 items-center">
             <Truck className="svg-size" />
             <h4 className="text-lg font-bold w-max">Direccion de Envio</h4>

@@ -4,11 +4,11 @@ import { AuthLayout } from '@pages/layouts/AuthLayout'
 import { Button } from '@forms/button'
 import { User } from '@utils/types/user.types'
 
-import { useUserStore } from '@/store'
+import { useUserStore, useShippingAddressStore } from '@/store'
 
 const Account: React.FC = () => {
   const navigate = useNavigate()
-
+  const { clearShippingAddresses } = useShippingAddressStore()
   const { userData, updateUserData, removeUserData } = useUserStore()
 
   const updatedUserData: Partial<User> = {
@@ -30,6 +30,7 @@ const Account: React.FC = () => {
       <Button
         onClick={() => {
           removeUserData()
+          clearShippingAddresses()
           navigate('/')
         }}
       >

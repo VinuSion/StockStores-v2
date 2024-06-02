@@ -18,6 +18,8 @@ import ProductDetailsPage from '@pages/auth/products/ProductDetailsPage'
 import ManageStore from '@pages/auth/stores/ManageStore'
 import ManageStoreProducts from '@pages/auth/products/ManageStoreProducts'
 import MakeOrder from '@pages/auth/orders/MakeOrder'
+import OrdersFromStore from '@pages/auth/orders/OrdersFromStore'
+import OrderDetailsPage from '@pages/auth/orders/OrderDetailsPage'
 
 const landingPagesData: RouterType[] = [
   {
@@ -102,6 +104,21 @@ const authPagesData: RouterType[] = [
     title: 'make-order',
     path: '/orders/new',
     element: <MakeOrder />,
+  },
+  {
+    title: 'order-details-my-orders',
+    path: '/orders/my/:orderId',
+    element: <OrderDetailsPage />,
+  },
+  {
+    title: 'orders-from-store',
+    path: '/orders/:storeSlug',
+    element: <OrdersFromStore />,
+  },
+  {
+    title: 'order-details-from-store',
+    path: '/orders/:storeSlug/:orderId',
+    element: <OrderDetailsPage />,
   },
 ]
 

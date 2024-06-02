@@ -25,34 +25,53 @@ export const formatPhoneNumber = (phoneNumber: string): string => {
 }
 
 export const formatDate = (dateString: string): string => {
-  const date = new Date(dateString)
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleString("es-CO", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
 
-  const monthNames = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre',
-  ]
-  const day = date.getUTCDate()
-  const month = monthNames[date.getUTCMonth()]
-  const year = date.getUTCFullYear()
+  const parts = formattedDate.split(" ");
+  const time = parts[6].replace(/^0/, ""); // Removes the leading zero from the hour
+  const formattedString = `${parts[1]} de ${parts[3]} ${parts[4]} ${parts[5]} ${time} ${parts[7]}`;
 
-  let hours = date.getUTCHours()
-  const minutes = date.getUTCMinutes().toString().padStart(2, '0')
-  const ampm = hours >= 12 ? 'PM' : 'AM'
-  hours = hours % 12
-  hours = hours ? hours : 12
+  return formattedString;
+};
 
-  return `${month} ${day}, ${year} - ${hours}:${minutes} ${ampm}`
-}
+// export const formatDate = (dateString: string): string => {
+//   const date = new Date(dateString)
+
+//   const monthNames = [
+//     'Enero',
+//     'Febrero',
+//     'Marzo',
+//     'Abril',
+//     'Mayo',
+//     'Junio',
+//     'Julio',
+//     'Agosto',
+//     'Septiembre',
+//     'Octubre',
+//     'Noviembre',
+//     'Diciembre',
+//   ]
+//   const day = date.getUTCDate()
+//   const month = monthNames[date.getUTCMonth()]
+//   const year = date.getUTCFullYear()
+
+//   let hours = date.getUTCHours()
+//   const minutes = date.getUTCMinutes().toString().padStart(2, '0')
+//   const ampm = hours >= 12 ? 'PM' : 'AM'
+//   hours = hours % 12
+//   hours = hours ? hours : 12
+
+//   return `${month} ${day}, ${year} - ${hours}:${minutes} ${ampm}`
+// }
 
 export const compareDates = (createdAt: string, updatedAt: string): string => {
   const createdDate = new Date(createdAt)

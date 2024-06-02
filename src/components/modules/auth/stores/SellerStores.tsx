@@ -2,7 +2,7 @@ import { useGetSellerStores } from '@services/storeService/useGetSellerStores'
 import { SellerStoresProps } from '@utils/types/user.types'
 import { SellerStoreCard } from '@modules/auth/stores/SellerStoreCard'
 
-const SellerStores: React.FC<SellerStoresProps> = ({ sellerId }) => {
+const SellerStores: React.FC<SellerStoresProps> = ({ sellerId, isOrdersPage = false }) => {
   const { isLoading, isError, data, error } = useGetSellerStores(sellerId)
 
   if (isLoading) {
@@ -16,7 +16,7 @@ const SellerStores: React.FC<SellerStoresProps> = ({ sellerId }) => {
   return (
     <>
       {data?.map((store, index) => (
-        <SellerStoreCard key={index} store={store} />
+        <SellerStoreCard key={index} store={store} isOrdersPage={isOrdersPage} />
       ))}
     </>
   )

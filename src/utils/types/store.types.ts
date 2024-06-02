@@ -22,4 +22,5 @@ export type Store = {
 
 export interface IStoreProps {
   store: Store
+  isOrdersPage?: boolean
 }

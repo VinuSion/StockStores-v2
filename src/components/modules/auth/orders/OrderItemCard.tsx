@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom'
 import { X } from 'lucide-react'
 
 import { FALLBACK_IMAGE } from '@utils/constants/errorMessages'
 import { formatPrice } from '@utils/numberMethods'
 import { IOrderItemProps } from '@utils/types/order.types'
 
-const OrderItemCard: React.FC<IOrderItemProps> = ({ orderItem }) => {
+const OrderItemCard: React.FC<IOrderItemProps> = ({
+  orderItem,
+  storeSlug = '',
+}) => {
   return (
     <div className="flex justify-between p-2 gap-3 rounded-md border-2 border-accent shadow-lg">
       <div className="flex gap-3">
@@ -16,11 +20,14 @@ const OrderItemCard: React.FC<IOrderItemProps> = ({ orderItem }) => {
       </div>
       <div className="flex justify-between gap-1 w-full">
         <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-2">
+          <Link
+            to={`/stores/${storeSlug}/products/${orderItem?.productSlug}`}
+            className="transition-all hover:text-primary hover:underline"
+          >
             <span className="flex text-md font-semibold">
               {orderItem?.productName}
             </span>
-          </div>
+          </Link>
           <div className="flex items-center gap-2">
             <p>
               ${formatPrice(orderItem?.productPrice || 0)}

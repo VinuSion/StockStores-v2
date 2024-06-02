@@ -29,4 +29,5 @@ export interface NotFoundProps {
 // Seller types & interfaces
 export interface SellerStoresProps {
   sellerId: string
+  isOrdersPage?: boolean
 }

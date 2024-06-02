@@ -14,7 +14,7 @@ import {
 } from '@utils/zod-schemas/payment-schema'
 import { Store } from '@utils/types/store.types'
 
-import { useOrderDetails } from '@services/orderService/useOrderDetails'
+import { useOrderDetails } from '@hooks/useOrderDetails'
 import {
   useUserStore,
   useShippingAddressStore,
